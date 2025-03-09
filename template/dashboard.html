@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Holdings</title>
+    <!-- <link rel="icon" type="image/x-icon" href="images/favicon.png"> -->
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/scale.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
+    />
+    <link rel="stylesheet" href="css/style.min.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <main>
+        <div
+          id="dashboard"
+          class="flex flex-col bg-[#B1D0FF] min-h-[100vh] h-full w-full"
+        >
+          <sidebar></sidebar>
+
+          <root-layout>
+            <div class="text-end !mb-4">
+              <user-switch></user-switch>
+            </div>
+
+            <div class="block">
+              <h1
+                class="block !m-0 !text-[#363636] !text-[16px] !font-bold uppercase"
+              >
+                Thông tin cá nhân
+              </h1>
+            </div>
+
+            <form
+              action=""
+              id="dashboardForm"
+              class="rounded-[12px] bg-white px-2.5 !py-1 xl:max-w-[552px] !mt-[100px] max-md:!mt-[30px]"
+            >
+              <div class="group-image bg-[#F4F9FD] rounded-[8px] p-[25px]">
+                <!-- <div class="block">
+                  <img id="cropperImage" src="images/asset/bg-login.jpg" />
+                </div>
+
+                <button type="button" onclick="imageCropped()">result</button> -->
+                <div class="w-[128px] h-[128px] mx-auto relative">
+                  <div
+                    class="relative w-full h-full rounded-[50%] overflow-hidden"
+                  >
+                    <input
+                      type="file"
+                      name=""
+                      id="croppieImageUpload"
+                      class="pointer-events-none opacity-0 absolute"
+                    />
+                    <label for="croppieImageUpload" class="cursor-pointer">
+                      <img
+                        src="images/asset/md-ava.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </label>
+                  </div>
+
+                  <div
+                    class="absolute bottom-[-15px] right-[20px] pointer-events-none"
+                  >
+                    <img src="images/asset/circle-ic-cam.png" alt="" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="max-w-[265px] mx-auto p-[30px_0_60px]">
+                <div class="group-inputs">
+                  <div class="input !mb-2.5">
+                    <span
+                      class="block text-[#909090] text-[14px] font-normal !mb-1"
+                      >Tên đăng nhập</span
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Nguyễn Đức Hiếu"
+                      class="w-full border border-solid border-[#ECECEC] bg-white !rounded-[8px] text-[#363636] text-[14px] font-normal !px-2 !py-1"
+                    />
+                  </div>
+                  <div class="input !mb-2.5">
+                    <span
+                      class="block text-[#909090] text-[14px] font-normal !mb-1"
+                      >Số điện thoại</span
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="9094 666 555"
+                      class="w-full border border-solid border-[#ECECEC] bg-white !rounded-[8px] text-[#363636] text-[14px] font-normal !p-2"
+                    />
+                  </div>
+                  <div class="input !mb-2.5">
+                    <span
+                      class="block text-[#909090] text-[14px] font-normal !mb-1"
+                      >Email</span
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="hieund105@abc.com"
+                      class="w-full border border-solid border-[#ECECEC] bg-white !rounded-[8px] text-[#363636] text-[14px] font-normal !p-2"
+                    />
+                  </div>
+                  <div class="input !mb-2.5">
+                    <span
+                      class="block text-[#909090] text-[14px] font-normal !mb-1"
+                      >Mật khẩu</span
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Nhập mật khẩu"
+                      class="w-full border border-solid border-[#ECECEC] bg-white !rounded-[8px] text-[#363636] text-[14px] font-normal !p-2"
+                    />
+                  </div>
+                  <div class="input !mb-2.5">
+                    <span
+                      class="block text-[#909090] text-[14px] font-normal !mb-1"
+                      >Nhập lại mật khẩu</span
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Nhập lại mật khẩu"
+                      class="w-full border border-solid border-[#ECECEC] bg-white !rounded-[8px] text-[#363636] text-[14px] font-normal !p-2"
+                    />
+                  </div>
+                </div>
+
+                <div class="text-center !mt-7">
+                  <button
+                    type="button"
+                    class="text-white text-[14px] font-bold !rounded-[8px] !bg-[#3F8CFE] hover:!bg-[#18478D] transition max-w-[152px] w-full p-2.5"
+                  >
+                    Lưu
+                  </button>
+                </div>
+              </div>
+            </form>
+          </root-layout>
+        </div>
+      </main>
+
+      <!-- Modal -->
+      <div
+        class="modal fade modal-dialog-centered"
+        id="modalCroppie"
+        style="display: none"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Modal title
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div id="croppie-container"></div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="js/vuedefineasync.js"></script>
+    <script src="libs/jquery/jquery-3.7.1.min.js"></script>
+    <script src="libs/bootstrap/popper.min.js"></script>
+    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      Vue.createApp({
+        components: {
+          sidebar: Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/sidebar.vue', options),
+          ),
+          'root-layout': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/root-layout.vue', options),
+          ),
+          'user-switch': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/user-switch.vue', options),
+          ),
+        },
+        data() {
+          return {}
+        },
+        mounted() {
+          window.onload = () => {
+            // $('#modalCroppie').modal('show')
+          }
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

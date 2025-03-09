@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Holdings</title>
+    <!-- <link rel="icon" type="image/x-icon" href="images/favicon.png"> -->
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/scale.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="css/style.min.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <main>
+        <div
+          id="dashboard"
+          class="flex flex-col bg-[#B1D0FF] min-h-[100vh] h-full w-full"
+        >
+          <sidebar></sidebar>
+
+          <root-layout>
+            <div class="text-end !mb-4">
+              <user-switch></user-switch>
+            </div>
+
+            <div class="block xl:mb-10 mb-7">
+              <h1
+                class="block !m-0 !text-[#363636] !text-[16px] !font-bold uppercase"
+              >
+                Quản lý người dùng
+              </h1>
+            </div>
+
+            <div class="bg-white rounded-[12px] p-2.5 !mb-6">
+              <div class="rounded-[8px] bg-[#F4F9FD] py-2.5 px-2">
+                <div
+                  class="group-fill-input flex flex-wrap items-stretch gap-2.5"
+                >
+                  <div class="grow grid grid-cols-12 gap-2.5">
+                    <div class="col-span-4 group-input">
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Tên, số điện thoại"
+                        class="!rounded-[8px] border border-solid !border-[#ececec] bg-white p-2.5 !text-[#363636] !text-[12px] font-normal block w-full"
+                      />
+                    </div>
+
+                    <div class="col-span-4 group-input">
+                      <select class="select2-permisson select2-user-manage">
+                        <option value="one">First</option>
+                        <option value="two">Second</option>
+                        <option value="three">Third</option>
+                      </select>
+                    </div>
+
+                    <div class="col-span-4 group-input">
+                      <select class="select2-status select2-user-manage">
+                        <option value="one">First</option>
+                        <option value="two">Second</option>
+                        <option value="three">Third</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="ms-auto inline-flex items-center !gap-1 !bg-[#3F8CFE] !rounded-[8px] !p-[5px_16px] text-white !text-[14px] !font-bold hover:shadow-[inset_0_200px_0_#0000002d] transition"
+                  >
+                    <img src="images/asset/lucide_search.svg" alt="" />
+                    Tìm kiếm
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-end !mb-2">
+              <button
+                type="button"
+                class="inline-flex items-center !gap-1 !text-white !text-[14px] !font-bold !bg-[#3F8CFE] !rounded-[8px] !p-[6px_15px] cursor-pointer"
+                data-bs-toggle="modal"
+                data-bs-target="#modalUserAdmin"
+              >
+                <img src="images/asset/si_add-fill.svg" alt="" />
+                Thêm mới
+              </button>
+            </div>
+
+            <!-- <filte-table></filte-table> -->
+          </root-layout>
+        </div>
+      </main>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalUserAdmin">
+        <div class="modal-dialog modal-dialog-centered !max-w-[410px]">
+          <div class="modal-content xl:!p-[60px] xl:!pb-12 !p-[30px]">
+            <div class="absolute !right-4 !top-4">
+              <button type="button" class="btn-close" data-bs-dismiss="modal">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M12 13.3998L7.10005 18.2998C6.91672 18.4831 6.68338 18.5748 6.40005 18.5748C6.11672 18.5748 5.88338 18.4831 5.70005 18.2998C5.51672 18.1165 5.42505 17.8831 5.42505 17.5998C5.42505 17.3165 5.51672 17.0831 5.70005 16.8998L10.6 11.9998L5.70005 7.0998C5.51672 6.91647 5.42505 6.68314 5.42505 6.3998C5.42505 6.11647 5.51672 5.88314 5.70005 5.6998C5.88338 5.51647 6.11672 5.4248 6.40005 5.4248C6.68338 5.4248 6.91672 5.51647 7.10005 5.6998L12 10.5998L16.9 5.6998C17.0834 5.51647 17.3167 5.4248 17.6 5.4248C17.8834 5.4248 18.1167 5.51647 18.3 5.6998C18.4834 5.88314 18.575 6.11647 18.575 6.3998C18.575 6.68314 18.4834 6.91647 18.3 7.0998L13.4 11.9998L18.3 16.8998C18.4834 17.0831 18.575 17.3165 18.575 17.5998C18.575 17.8831 18.4834 18.1165 18.3 18.2998C18.1167 18.4831 17.8834 18.5748 17.6 18.5748C17.3167 18.5748 17.0834 18.4831 16.9 18.2998L12 13.3998Z"
+                    fill="#909090"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="modal-body !p-0">
+              <div class="text-center !mb-8">
+                <h3 class="text-[#363636] !text-[14px] !font-bold uppercase">
+                  thêm mới người dùng
+                </h3>
+              </div>
+
+              <form action="" id="formUserAdmin" class="form-user-admin">
+                <div class="grid grid-cols-12 gap-2.5">
+                  <div class="col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Họ và tên</span>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="group-input"
+                        placeholder="Nhập họ và tên"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="xl:col-span-6 col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Mật khẩu</span>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="group-input"
+                        placeholder="Nhập mật khẩu"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="xl:col-span-6 col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title"
+                        >Nhập lại mật khẩu</span
+                      >
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="group-input"
+                        placeholder="Nhập lại mật khẩu"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Số điện thoại</span>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="group-input"
+                        placeholder="Nhập số điện thoại"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="xl:col-span-6 col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Email</span>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="group-input"
+                        placeholder="Nhập email"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="xl:col-span-6 col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Mã nhân viên</span>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="group-input"
+                        placeholder="Nhập mã nhân viên"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="xl:col-span-6 col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Trạng thái</span>
+                      <div class="group-select">
+                        <select class="select2-formstatus select2-formadmin">
+                          <option value="one">First</option>
+                          <option value="two">Second</option>
+                          <option value="three">Third</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="xl:col-span-6 col-span-12">
+                    <div class="group-item">
+                      <span class="required group-title">Quyền</span>
+                      <div class="group-select">
+                        <select
+                          class="select2-formpermission select2-formadmin"
+                        >
+                          <option value="one">First</option>
+                          <option value="two">Second</option>
+                          <option value="three">Third</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center !mt-7">
+                  <button
+                    type="button"
+                    class="!text-white !text-[16px] !font-bold !bg-[#3F8CFE] !rounded-[8px] !p-[6px_30px] hover:shadow-[inset_0_200px_0_#0000002d] transition"
+                  >
+                    Xác nhận
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="js/vuedefineasync.js"></script>
+    <script src="libs/jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="libs/bootstrap/popper.min.js"></script>
+    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      Vue.createApp({
+        components: {
+          sidebar: Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/sidebar.vue', options),
+          ),
+          'root-layout': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/root-layout.vue', options),
+          ),
+          'user-switch': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/user-switch.vue', options),
+          ),
+          'filte-table': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/filte-table.vue', options),
+          ),
+        },
+        data() {
+          return {}
+        },
+        mounted() {
+          window.onload = () => {
+            // $('.select2-formstatus').select2({
+            //   placeholder: 'Chọn trạng thái',
+            // })
+            // $('.select2-formpermission').select2({
+            //   placeholder: 'Chọn quyền',
+            // })
+
+            $('.select2-permisson').select2()
+            $('.select2-status').select2()
+          }
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

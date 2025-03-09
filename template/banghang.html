@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Holdings</title>
+    <!-- <link rel="icon" type="image/x-icon" href="images/favicon.png"> -->
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/scale.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="css/style.min.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <main>
+        <div
+          id="dashboard"
+          class="flex flex-col bg-[#B1D0FF] min-h-[100vh] h-full w-full"
+        >
+          <sidebar></sidebar>
+
+          <root-layout>
+            <div class="text-end !mb-4">
+              <user-switch></user-switch>
+            </div>
+
+            <div
+              class="inline-block text-[#3F8CFE] text-[16px] font-bold uppercase leading-normal bg-white rounded-[12px] p-[15px_25px] mb-[34px]"
+            >
+              vinhomes ocean park 2
+            </div>
+
+            <div class="!mb-6">
+              <filte-table></filte-table>
+            </div>
+
+            <div class="flex flex-wrap items-stretch justify-end !gap-3 !mb-2">
+              <a
+                href=""
+                class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
+              >
+                <img src="images/asset/mdi_export.svg" alt="" />
+                <span class="!text-white !text-[14px] !font-bold">
+                  Export file
+                </span>
+              </a>
+
+              <a
+                href=""
+                class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
+              >
+                <img src="images/asset/mdi_import.svg" alt="" />
+                <span class="!text-white !text-[14px] !font-bold">
+                  Import file
+                </span>
+              </a>
+            </div>
+
+            <table-magic></table-magic>
+          </root-layout>
+        </div>
+      </main>
+    </div>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="js/vuedefineasync.js"></script>
+    <script src="libs/jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="libs/bootstrap/popper.min.js"></script>
+    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@33.1.1/dist/ag-grid-enterprise.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      Vue.createApp({
+        components: {
+          sidebar: Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/sidebar.vue', options),
+          ),
+          'root-layout': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/root-layout.vue', options),
+          ),
+          'user-switch': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/user-switch.vue', options),
+          ),
+          'filte-table': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/filte-table.vue', options),
+          ),
+          'table-magic': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/table-magic.vue', options),
+          ),
+        },
+        data() {
+          return {}
+        },
+        mounted() {
+          window.onload = () => {
+            // $('#modalCroppie').modal('show')
+          }
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>
