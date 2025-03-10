@@ -146,7 +146,7 @@ window.addEventListener('load', () => {
               {
                 enableExif: true,
                 viewport: { width: 270, height: 270, type: 'circle' },
-                boundary: { width: 540, height: 540 },
+                boundary: { width: 410, height: 270 },
                 showZoomer: true,
                 enableOrientation: true,
               },
