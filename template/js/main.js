@@ -101,73 +101,73 @@ const collapseFilter = () => {
   })
 }
 
+const croppedImage = () => {
+  let croppieInstance
+  let containerWidth, containerHeight
+
+  if (document.getElementById('croppieImageUpload')) {
+    // Xử lý khi người dùng chọn ảnh
+    document
+      .getElementById('croppieImageUpload')
+      .addEventListener('change', function (event) {
+        const file = event.target.files[0]
+        if (file) {
+          const reader = new FileReader()
+
+          reader.onload = function (e) {
+            const img = new Image()
+            img.onload = function () {
+              // Lấy kích thước của container chứa Croppie
+              const croppieContainer =
+                document.getElementById('croppie-container')
+              containerWidth = croppieContainer.offsetWidth // Chiều rộng của khung chứa ảnh
+              containerHeight = croppieContainer.offsetHeight // Chiều cao của khung chứa ảnh
+
+              console.log('Container width: ' + containerWidth + 'px')
+              console.log('Container height: ' + containerHeight + 'px')
+
+              // Khởi tạo Croppie khi ảnh đã được tải lên
+              if (croppieInstance) {
+                croppieInstance.destroy()
+              }
+
+              // Hiển thị ảnh vào Croppie
+              croppieInstance = new Croppie(
+                document.getElementById('croppie-container'),
+                {
+                  enableExif: true,
+                  viewport: { width: 270, height: 270, type: 'circle' },
+                  boundary: { width: 410, height: 270 },
+                  showZoomer: true,
+                  enableOrientation: true,
+                },
+              )
+
+              // Bind ảnh vào Croppie
+              croppieInstance.bind({
+                url: e.target.result,
+                orientation: 1,
+              })
+
+              // Mở modal khi ảnh đã sẵn sàng
+              const myModal = new bootstrap.Modal(
+                document.getElementById('modalCroppie'),
+              )
+              myModal.show()
+            }
+            img.src = e.target.result
+          }
+
+          reader.readAsDataURL(file)
+        }
+      })
+  }
+}
+
 window.addEventListener('load', () => {
   inputTogglePassword()
   checkVerifyOTP()
   checkSidebar()
   sidebarMobile()
-
-  // setInterval(() => {
-  //   console.clear()
-  // }, 1)
-  // imageCroppie()
-
-  let croppieInstance
-  let containerWidth, containerHeight // Biến lưu kích thước của khung chứa ảnh (container)
-
-  // Xử lý khi người dùng chọn ảnh
-  document
-    .getElementById('croppieImageUpload')
-    .addEventListener('change', function (event) {
-      const file = event.target.files[0]
-      if (file) {
-        const reader = new FileReader()
-
-        reader.onload = function (e) {
-          const img = new Image()
-          img.onload = function () {
-            // Lấy kích thước của container chứa Croppie
-            const croppieContainer =
-              document.getElementById('croppie-container')
-            containerWidth = croppieContainer.offsetWidth // Chiều rộng của khung chứa ảnh
-            containerHeight = croppieContainer.offsetHeight // Chiều cao của khung chứa ảnh
-
-            console.log('Container width: ' + containerWidth + 'px')
-            console.log('Container height: ' + containerHeight + 'px')
-
-            // Khởi tạo Croppie khi ảnh đã được tải lên
-            if (croppieInstance) {
-              croppieInstance.destroy()
-            }
-
-            // Hiển thị ảnh vào Croppie
-            croppieInstance = new Croppie(
-              document.getElementById('croppie-container'),
-              {
-                enableExif: true,
-                viewport: { width: 270, height: 270, type: 'circle' },
-                boundary: { width: 410, height: 270 },
-                showZoomer: true,
-                enableOrientation: true,
-              },
-            )
-
-            // Bind ảnh vào Croppie
-            croppieInstance.bind({
-              url: e.target.result,
-              orientation: 1,
-            })
-
-            // Mở modal khi ảnh đã sẵn sàng
-            const myModal = new bootstrap.Modal(
-              document.getElementById('modalCroppie'),
-            )
-            myModal.show()
-          }
-          img.src = e.target.result
-        }
-
-        reader.readAsDataURL(file)
-      }
-    })
+  croppedImage()
 })

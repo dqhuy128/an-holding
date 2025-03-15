@@ -6,23 +6,14 @@
     <title>An Holdings</title>
     <!-- <link rel="icon" type="image/x-icon" href="images/favicon.png"> -->
     <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tippy.js@6/animations/scale.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
-      rel="stylesheet"
-    />
+
+    <link rel="stylesheet" href="js/croppie.min.css" />
+    <link href="js/select2.min.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
     />
+
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
 
@@ -152,7 +143,7 @@
                     </div>
                   </div>
 
-                  <div class="xl:col-span-6 col-span-12">
+                  <div class="col-span-12 xl:col-span-6">
                     <div class="group-item">
                       <span class="required group-title">Mật khẩu</span>
                       <input
@@ -165,7 +156,7 @@
                     </div>
                   </div>
 
-                  <div class="xl:col-span-6 col-span-12">
+                  <div class="col-span-12 xl:col-span-6">
                     <div class="group-item">
                       <span class="required group-title"
                         >Nhập lại mật khẩu</span
@@ -193,7 +184,7 @@
                     </div>
                   </div>
 
-                  <div class="xl:col-span-6 col-span-12">
+                  <div class="col-span-12 xl:col-span-6">
                     <div class="group-item">
                       <span class="required group-title">Email</span>
                       <input
@@ -206,7 +197,7 @@
                     </div>
                   </div>
 
-                  <div class="xl:col-span-6 col-span-12">
+                  <div class="col-span-12 xl:col-span-6">
                     <div class="group-item">
                       <span class="required group-title">Mã nhân viên</span>
                       <input
@@ -219,7 +210,7 @@
                     </div>
                   </div>
 
-                  <div class="xl:col-span-6 col-span-12">
+                  <div class="col-span-12 xl:col-span-6">
                     <div class="group-item">
                       <span class="required group-title">Trạng thái</span>
                       <div class="group-select">
@@ -232,7 +223,7 @@
                     </div>
                   </div>
 
-                  <div class="xl:col-span-6 col-span-12">
+                  <div class="col-span-12 xl:col-span-6">
                     <div class="group-item">
                       <span class="required group-title">Quyền</span>
                       <div class="group-select">
@@ -262,20 +253,19 @@
         </div>
       </div>
     </div>
-    <script src="https://unpkg.com/vue@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="js/vue3-sfc-loader.js"></script>
     <script src="js/vuedefineasync.js"></script>
     <script src="libs/jquery/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="libs/bootstrap/popper.min.js"></script>
     <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="libs/swiper/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="js/index.global.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/tippy.umd.min.js"></script>
+    <script src="js/croppie.min.js"></script>
+    <script src="js/select2.min.js"></script>
     <script src="js/main.js"></script>
     <script>
       Vue.createApp({

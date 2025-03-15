@@ -6,16 +6,9 @@
     <title>An Holdings</title>
     <!-- <link rel="icon" type="image/x-icon" href="images/favicon.png"> -->
     <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tippy.js@6/animations/scale.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
-    />
+    <link rel="stylesheet" href="js/croppie.min.css" />
+
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
 
@@ -60,12 +53,12 @@
                       type="file"
                       name=""
                       id="croppieImageUpload"
-                      class="pointer-events-none opacity-0 absolute"
+                      class="absolute opacity-0 pointer-events-none"
                     />
                     <label for="croppieImageUpload" class="cursor-pointer">
                       <img
                         src="images/asset/md-ava.png"
-                        class="w-full h-full object-cover"
+                        class="object-cover w-full h-full"
                         alt=""
                       />
                     </label>
@@ -169,8 +162,8 @@
         style="display: none"
       >
         <div class="modal-dialog modal-dialog-centered !max-w-[410px]">
-          <div class="modal-content relative">
-            <div class="absolute right-4 top-4 z-10">
+          <div class="relative modal-content">
+            <div class="absolute z-10 right-4 top-4">
               <button
                 type="button"
                 class="btn-close"
@@ -214,18 +207,18 @@
         </div>
       </div>
     </div>
-    <script src="https://unpkg.com/vue@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="js/vue3-sfc-loader.js"></script>
     <script src="js/vuedefineasync.js"></script>
     <script src="libs/jquery/jquery-3.7.1.min.js"></script>
     <script src="libs/bootstrap/popper.min.js"></script>
     <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="libs/swiper/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+
+    <script src="js/index.global.js"></script>
+    <script src="js/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="js/croppie.min.js"></script>
     <script src="js/main.js"></script>
     <script>
       Vue.createApp({
