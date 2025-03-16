@@ -1,5 +1,9 @@
 <template>
   <div id="userDropdown" class="relative">
+    <button type="button" id="btnSidebar">
+      <img src="images/assets/material-symbols_menu-rounded.svg" alt="" />
+    </button>
+
     <button
       type="button"
       id="tippyUserDropdown"

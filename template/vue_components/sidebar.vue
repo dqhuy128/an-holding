@@ -65,26 +65,6 @@
         </div>
       </div>
     </div>
-
-    <div class="xl:hidden">
-      <button
-        id="btnSidebar"
-        type="button"
-        class="absolute top-6 -right-3 z-20 !translate-x-[100%] bg-white !rounded-[8px] inline-flex items-center justify-center w-[40px] h-[40px]"
-      >
-        <svg
-          width="30"
-          height="19"
-          viewBox="0 0 30 19"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M30 0H0V3H30V0Z" fill="#010002" />
-          <path d="M30 8H0V11H30V8Z" fill="#010002" />
-          <path d="M30 16H0V19H30V16Z" fill="#010002" />
-        </svg>
-      </button>
-    </div>
   </div>
 </template>
 
