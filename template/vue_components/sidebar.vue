@@ -141,7 +141,7 @@ export default {
       sidebarMobile()
       croppedImage()
       checkSidebar()
-      toggleMenuDropdown()
+      // toggleMenuDropdown()
     })
   },
 }
