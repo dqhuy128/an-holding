@@ -112,10 +112,10 @@ const collapseFilter = () => {
   const optinal = document.querySelectorAll('.onOptinal')
 
   btnCollapse.addEventListener('click', () => {
-    if (blockCollapse.style.display === 'none') {
-      blockCollapse.style.display = 'block'
+    if (optinal.style.display === 'none') {
+      optinal.style.display = 'block'
     } else {
-      blockCollapse.style.display = 'none'
+      optinal.style.display = 'none'
     }
   })
 }
