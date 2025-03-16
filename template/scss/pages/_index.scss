@@ -115,3 +115,11 @@
     }
   }
 }
+
+.head-btn-setting {
+  &:hover {
+    svg path {
+      fill: #909090;
+    }
+  }
+}

@@ -22,6 +22,20 @@ const inputTogglePassword = () => {
   }
 }
 
+function toggleMenuDropdown() {
+  const btn = $('.onToggleDropdown')
+
+  if (btn && btn.length > 0) {
+    btn.each(function (id, item) {
+      $(item).click(function () {
+        console.log('object')
+        $(this).parent().siblings().slideToggle()
+        $(this).siblings().toggleClass('active')
+      })
+    })
+  }
+}
+
 // Hàm để tự động di chuyển giữa các ô OTP khi người dùng nhập
 
 const checkVerifyOTP = () => {
@@ -76,12 +90,17 @@ function checkSidebar() {
 }
 
 const sidebarMobile = () => {
-  if (screen.width < 1280) {
-    const sidebar = document.getElementById('sidebarTranslate')
-    const btn = document.getElementById('btnSidebar')
+  const sidebar = document.getElementById('sidebarTranslate')
+  const btn = document.getElementById('btnSidebar')
+  const btnClose = document.getElementById('btnSidebar-mb')
 
+  if (screen.width < 1280) {
     btn.addEventListener('click', () => {
       sidebar.classList.toggle('is-open')
+    })
+
+    btnClose.addEventListener('click', () => {
+      sidebar.classList.remove('is-open')
     })
   }
 }
@@ -169,4 +188,5 @@ window.addEventListener('load', () => {
   sidebarMobile()
   croppedImage()
   checkSidebar()
+  toggleMenuDropdown()
 })

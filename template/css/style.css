@@ -21742,4 +21742,8 @@ span.ag-header-icon.ag-header-cell-menu-button.ag-header-menu-icon.ag-header-men
   font-weight: 400;
   line-height: normal;
   padding: 8px;
+}
+
+.head-btn-setting:hover svg path {
+  fill: #909090;
 }/*# sourceMappingURL=style.css.map */
