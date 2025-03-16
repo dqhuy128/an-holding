@@ -295,6 +295,11 @@
 export default {
   mounted() {
     $(document).ready(function () {
+      inputTogglePassword()
+      checkVerifyOTP()
+      checkSidebar()
+      sidebarMobile()
+      croppedImage()
       initFieldSelect2()
       initPriceSame()
       priceRangeSlider()

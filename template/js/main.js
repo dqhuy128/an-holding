@@ -62,7 +62,7 @@ const verifyOtp = () => {
   }
 }
 
-const checkSidebar = () => {
+function checkSidebar() {
   const sidebar = document.getElementById('Sidebar')
   const root = document.getElementById('RootLayout')
   const pad = 24
@@ -82,7 +82,6 @@ const sidebarMobile = () => {
 
     btn.addEventListener('click', () => {
       sidebar.classList.toggle('is-open')
-      console.log(sidebar)
     })
   }
 }
@@ -167,7 +166,7 @@ const croppedImage = () => {
 window.addEventListener('load', () => {
   inputTogglePassword()
   checkVerifyOTP()
-  checkSidebar()
   sidebarMobile()
   croppedImage()
+  checkSidebar()
 })

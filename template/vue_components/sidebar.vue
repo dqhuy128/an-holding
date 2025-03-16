@@ -118,7 +118,11 @@ const menuData = reactive([
 <script>
 export default {
   mounted() {
+    inputTogglePassword()
+    checkVerifyOTP()
+    checkSidebar()
     sidebarMobile()
+    croppedImage()
   },
 }
 </script>
