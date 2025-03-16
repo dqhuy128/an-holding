@@ -112,11 +112,13 @@ const collapseFilter = () => {
   const optinal = document.querySelectorAll('.onOptinal')
 
   btnCollapse.addEventListener('click', () => {
-    if (optinal.style.display === 'none') {
-      optinal.style.display = 'block'
-    } else {
-      optinal.style.display = 'none'
-    }
+    optinal.forEach((item) => {
+      if (item.style.display === 'none') {
+        item.style.display = 'block'
+      } else {
+        item.style.display = 'none'
+      }
+    })
   })
 }
 
@@ -183,6 +185,224 @@ const croppedImage = () => {
   }
 }
 
+function filterTable() {
+  // init range slider
+  function priceRangeSlider() {
+    // Thiết lập giá trị mặc định
+    var minDefault = 0
+    var maxDefault = 300000000 // 300 triệu, bạn có thể đổi thành 3000000000 (3 tỉ), ...
+
+    // Khởi tạo Slider
+    $('#priceSlider').slider({
+      range: true,
+      min: 0,
+      max: 300000000, // Giới hạn tối đa
+      step: 500000, // Bước nhảy, ví dụ: 500k
+      values: [minDefault, maxDefault],
+      slide: function (event, ui) {
+        // Cập nhật hai ô input khi kéo slider
+        $('#minPrice').val(ui.values[0])
+        $('#maxPrice').val(ui.values[1])
+      },
+    })
+
+    // Gán giá trị ban đầu cho ô nhập
+    $('#minPrice').val($('#priceSlider').slider('values', 0))
+    $('#maxPrice').val($('#priceSlider').slider('values', 1))
+
+    // Khi người dùng thay đổi giá trị trong ô input
+    $('#minPrice, #maxPrice').on('change', function () {
+      var minVal = parseInt($('#minPrice').val(), 10)
+      var maxVal = parseInt($('#maxPrice').val(), 10)
+
+      // Kiểm tra nếu người dùng nhập sai, đặt về mặc định
+      if (isNaN(minVal)) minVal = 0
+      if (isNaN(maxVal)) maxVal = 300000000
+
+      // Ràng buộc minVal không nhỏ hơn 0, maxVal không lớn hơn 300 triệu
+      if (minVal < 0) minVal = 0
+      if (maxVal > 300000000) maxVal = 300000000
+
+      // Nếu minVal lớn hơn maxVal thì hoán đổi
+      if (minVal > maxVal) {
+        var temp = maxVal
+        maxVal = minVal
+        minVal = temp
+      }
+
+      // Cập nhật slider
+      $('#priceSlider').slider('values', [minVal, maxVal])
+    })
+
+    // Nút Đặt lại
+    $('#resetButton').click(function () {
+      $('#priceSlider').slider('values', [minDefault, maxDefault])
+      $('#minPrice').val(minDefault)
+      $('#maxPrice').val(maxDefault)
+    })
+
+    // Nút Áp dụng
+    $('#applyButton').click(function () {
+      var minVal = $('#priceSlider').slider('values', 0)
+      var maxVal = $('#priceSlider').slider('values', 1)
+      alert(
+        'Giá từ: ' +
+          minVal.toLocaleString() +
+          ' VND\nGiá đến: ' +
+          maxVal.toLocaleString() +
+          ' VND',
+      )
+    })
+  }
+
+  // init select2 khoang gia
+  function initPriceSame() {
+    // Initialize Select2 on all filter selects
+    $('.filter-select').select2({
+      minimumResultsForSearch: Infinity, // Hide the search box
+      width: '100%',
+    })
+
+    // Handle the Khoảng giá dropdown toggle
+    $('#price-range-toggle').click(function () {
+      // This would typically show a custom dropdown or dialog
+      // For demonstration, we'll just log a message
+      console.log('Price range dropdown clicked')
+      // Here you would normally toggle a custom dropdown component
+      // You could add your own code to show a price range selector
+    })
+
+    // Handle changes for price sorting
+    $('#price-sort').on('change', function () {
+      console.log('Price sort changed to:', $(this).val())
+      // Add your sorting logic here
+    })
+
+    // Handle changes for priority
+    $('#priority-sort').on('change', function () {
+      console.log('Priority sort changed to:', $(this).val())
+      // Add your priority filtering logic here
+    })
+
+    $('.group-input .dropdown-item').click(function (e) {
+      e.stopPropagation() // Ngừng sự kiện click
+    })
+
+    $('.block-selector').each(function (id, el) {
+      const name = $(el).attr('id')
+      const dataAttr = $(el).data('attr')
+
+      // When "Tất cả" is selected, select all options
+      $('#' + name + '.block-selector').on('select2:select', function (e) {
+        if (e.params.data.id === 'all') {
+          $('#' + name + '.block-selector option').prop('selected', true)
+          $('#' + name + '.block-selector').trigger('change')
+        }
+      })
+
+      // When "Tất cả" is unselected, unselect all options
+      $('#' + name + '.block-selector').on('select2:unselect', function (e) {
+        if (e.params.data.id === 'all') {
+          $('#' + name + '.block-selector option').prop('selected', false)
+          $('#' + name + '.block-selector').trigger('change')
+        }
+      })
+    })
+
+    // Update checkboxes when dropdown opens
+    $('#block-selector').on('select2:open', function () {
+      setTimeout(function () {
+        updateCheckboxes()
+      }, 0)
+    })
+  }
+
+  // init select2
+  function initFieldSelect2() {
+    $('.block-selector.filter').select2({
+      placeholder: 'Chọn khoảng giá',
+      minimumResultsForSearch: Infinity,
+      allowClear: true,
+    })
+
+    $('.block-selector').each(function (id, el) {
+      const name = $(el).attr('id')
+      const dataAttr = $(el).data('attr')
+
+      // Initialize Select2
+      $('#' + name + '.block-selector').select2({
+        placeholder: dataAttr,
+        minimumResultsForSearch: Infinity,
+        closeOnSelect: false,
+        // allowClear: true,
+        templateResult: formatOption,
+        templateSelection: formatSelection,
+      })
+    })
+
+    $('#filters').select2({
+      placeholder: dataAttr,
+      minimumResultsForSearch: Infinity,
+      closeOnSelect: false,
+      // allowClear: true,
+      templateResult: formatOption,
+      templateSelection: formatSelection,
+    })
+  }
+
+  // Format each option to include a checkbox
+  function formatOption(option) {
+    if (!option.id) {
+      return option.text
+    }
+
+    // Check if this option is selected
+    var isSelected = $(option.element).prop('selected')
+    var selectedClass = isSelected ? 'option-selected' : ''
+
+    var $option = $(
+      '<div class="checkbox-container ' +
+        selectedClass +
+        '">' +
+        '<span class="checkbox"></span>' +
+        '<span>' +
+        option.text +
+        '</span>' +
+        '</div>',
+    )
+
+    return $option
+  }
+
+  // Format the selected options
+  function formatSelection(option) {
+    return option.text
+  }
+
+  // Update checkboxes to reflect current selection state
+  function updateCheckboxes() {
+    var selectedValues = $('.block-selector').val() || []
+
+    $('.select2-results__option').each(function () {
+      var optionId = $(this).data('select2-id')
+      if (optionId) {
+        // Extract the actual value from the select2-id
+        var value = optionId.replace('block-selector-', '')
+
+        if (selectedValues.includes(value)) {
+          $(this).find('.checkbox-container').addClass('option-selected')
+        } else {
+          $(this).find('.checkbox-container').removeClass('option-selected')
+        }
+      }
+    })
+  }
+
+  priceRangeSlider()
+  initPriceSame()
+  initFieldSelect2()
+}
+
 window.addEventListener('load', () => {
   inputTogglePassword()
   checkVerifyOTP()
@@ -190,4 +410,5 @@ window.addEventListener('load', () => {
   croppedImage()
   checkSidebar()
   toggleMenuDropdown()
+  filterTable()
 })

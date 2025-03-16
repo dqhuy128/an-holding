@@ -33,26 +33,71 @@
               <filte-table></filte-table>
             </div>
 
-            <div class="flex flex-wrap items-stretch justify-end !gap-3 !mb-2">
-              <a
-                href=""
-                class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
-              >
-                <img src="images/asset/mdi_export.svg" alt="" />
-                <span class="!text-white !text-[14px] !font-bold">
-                  Export file
-                </span>
-              </a>
+            <div class="flex flex-wrap items-stretch !gap-3 !mb-2">
+              <div class="block">
+                <button
+                  type="button"
+                  id="headBtnSetting"
+                  class="head-btn-setting inline-flex items-center gap-2 !rounded-[8px] !bg-white !p-[6px_24px]"
+                  data-bs-toggle="dropdown"
+                >
+                  <img src="images/asset/icon-filter.svg" alt="" />
+                  <span class="text-[#363636] text-[14px] font-bold">
+                    Bộ lọc
+                  </span>
+                </button>
 
-              <a
-                href=""
-                class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
-              >
-                <img src="images/asset/mdi_import.svg" alt="" />
-                <span class="!text-white !text-[14px] !font-bold">
-                  Import file
-                </span>
-              </a>
+                <div class="dropdown">
+                  <span
+                    class="block text-[#363636] text-[12px] font-bold mb-2.5"
+                  >
+                    Cài đặt hiển thị
+                  </span>
+
+                  <ul
+                    class="dropdown-menu rounded-[8px] border border-solid border-[#ececec] bg-white"
+                  >
+                    <li class="!mb-4">
+                      <div class="dropdown-item">
+                        <select
+                          id="filters"
+                          class="block-selector"
+                          data-attr="Tìm kiếm"
+                        >
+                          <option value="all">Tất cả</option>
+                          <option value="thoi-dai">Thời Đại</option>
+                          <option value="pho-bien">Phố Biển</option>
+                          <option value="hai-au">Hải Âu</option>
+                          <option value="sao-bien">Sao Biển</option>
+                          <option value="ngoc-trai">Ngọc Trai</option>
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="ms-auto">
+                <a
+                  href=""
+                  class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
+                >
+                  <img src="images/asset/mdi_export.svg" alt="" />
+                  <span class="!text-white !text-[14px] !font-bold">
+                    Export file
+                  </span>
+                </a>
+
+                <a
+                  href=""
+                  class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
+                >
+                  <img src="images/asset/mdi_import.svg" alt="" />
+                  <span class="!text-white !text-[14px] !font-bold">
+                    Import file
+                  </span>
+                </a>
+              </div>
             </div>
 
             <table-magic></table-magic>
