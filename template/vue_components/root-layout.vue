@@ -7,13 +7,13 @@
 <script>
 export default {
   mounted() {
-    window.addEventListener('load', () => {
+    window.onload = () => {
       inputTogglePassword()
       checkVerifyOTP()
       checkSidebar()
       sidebarMobile()
       croppedImage()
-    })
+    }
   },
 }
 </script>
