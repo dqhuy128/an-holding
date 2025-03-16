@@ -235,9 +235,14 @@
           return {}
         },
         mounted() {
-          window.onload = () => {
-            // $('#modalCroppie').modal('show')
-          }
+          window.addEventListener('load', () => {
+            inputTogglePassword()
+            checkVerifyOTP()
+            sidebarMobile()
+            croppedImage()
+            checkSidebar()
+            // toggleMenuDropdown()
+          })
         },
       }).mount('#app')
     </script>

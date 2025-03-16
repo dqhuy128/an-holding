@@ -2,7 +2,7 @@
   <div class="bg-white rounded-[12px] p-2.5">
     <div class="rounded-[8px] bg-[#F4F9FD] py-2.5 px-2">
       <div class="text-end">
-        <button id="collapseFilter" class="cursor-pointer relative z-10">
+        <button id="collapseFilter" class="relative z-10 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -20,7 +20,7 @@
 
       <div id="toggleCollapseFilter">
         <div class="grid grid-cols-12 gap-2.5">
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="group-filter">
               <div class="group-input">
                 <span>Phân khu/Block</span>
@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="group-filter">
               <div class="group-input">
                 <span>Mã căn</span>
@@ -82,7 +82,7 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="group-filter">
               <div class="group-input">
                 <span>Loại hình sản phẩm</span>
@@ -103,7 +103,7 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div class="col-span-12 xl:col-span-3 md:col-span-6">
             <div class="group-filter">
               <div class="group-input">
                 <span>Hướng</span>
@@ -124,7 +124,10 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div
+            class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+            style="display: none"
+          >
             <div class="group-filter">
               <div class="group-input">
                 <span>Tiêu chuẩn bàn giao</span>
@@ -145,7 +148,10 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div
+            class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+            style="display: none"
+          >
             <div class="group-filter">
               <div class="group-input">
                 <span>Khoảng giá Full (tỷ)</span>
@@ -218,7 +224,10 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div
+            class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+            style="display: none"
+          >
             <div class="group-filter">
               <div class="group-input">
                 <span>Khoảng diện tích đất (m2)</span>
@@ -239,7 +248,10 @@
             </div>
           </div>
 
-          <div class="xl:col-span-3 md:col-span-6 col-span-12">
+          <div
+            class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+            style="display: none"
+          >
             <div class="group-filter">
               <div class="group-input">
                 <span>Giá TTS tạm tính</span>

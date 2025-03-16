@@ -109,6 +109,7 @@ const sidebarMobile = () => {
 const collapseFilter = () => {
   const btnCollapse = document.getElementById('collapseFilter')
   const blockCollapse = document.getElementById('toggleCollapseFilter')
+  const optinal = document.querySelectorAll('.onOptinal')
 
   btnCollapse.addEventListener('click', () => {
     if (blockCollapse.style.display === 'none') {
