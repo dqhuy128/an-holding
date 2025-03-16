@@ -4,6 +4,18 @@
   </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  mounted() {
+    window.addEventListener('load', () => {
+      inputTogglePassword()
+      checkVerifyOTP()
+      checkSidebar()
+      sidebarMobile()
+      croppedImage()
+    })
+  },
+}
+</script>
 
 <style></style>
