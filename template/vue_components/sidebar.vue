@@ -20,7 +20,8 @@
       </div>
 
       <div
-        class="overflow-bar-custom flex flex-col h-full overflow-auto bg-[url('../images/asset/bg-sidebar.png')] bg-cover bg-center bg-no-repeat xl:rounded-[12px] p-[70px_0_70px_10px]"
+        class="overflow-bar-custom flex flex-col h-full overflow-auto bg-cover bg-center bg-no-repeat xl:rounded-[12px] p-[70px_0_70px_10px]"
+        style="background-image: url('./images/asset/bg-sidebar.png')"
       >
         <div class="flex flex-col h-full gap-1">
           <!-- overflow-scroll h-full -->
