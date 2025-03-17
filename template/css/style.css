@@ -21742,4 +21742,93 @@ span.ag-header-icon.ag-header-cell-menu-button.ag-header-menu-icon.ag-header-men
   font-weight: 400;
   line-height: normal;
   padding: 8px;
+}
+
+.dropdown-filters {
+  margin-top: 2px;
+}
+.dropdown-filters .item input {
+  display: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.dropdown-filters .item input:checked + label {
+  background-color: #f4f9fd;
+}
+.dropdown-filters .item input:checked + label::after {
+  background-image: url("../images/asset/charm_tick.svg");
+}
+.dropdown-filters .item label {
+  position: relative;
+  width: 100%;
+  padding-left: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  padding: 6px 16px 6px 36px;
+}
+.dropdown-filters .item label::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid #ececec;
+  background: #fff;
+}
+.dropdown-filters .item label::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 2;
+}
+
+.form-add-new .ipt-gr .title {
+  display: block;
+  color: #363636;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 4px;
+}
+.form-add-new .ipt-gr input,
+.form-add-new .ipt-gr select {
+  display: block;
+  width: 100%;
+  color: #909090;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 8px;
+  border: 1px solid #ededf6;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 8px;
+}
+
+.group-input-admin .select2-selection__rendered {
+  padding: 0 !important;
+  line-height: normal !important;
+}
+.group-input-admin .select2-selection::after {
+  content: none !important;
+}
+.group-input-admin .select2-container--default .select2-selection--single .select2-selection__arrow {
+  -webkit-transform: translateY(-50%) !important;
+          transform: translateY(-50%) !important;
 }/*# sourceMappingURL=style.css.map */

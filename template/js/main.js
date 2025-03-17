@@ -340,6 +340,21 @@ function filterTable() {
       })
     })
 
+    $('.block-selector-admin').each(function (id, el) {
+      const name = $(el).attr('id')
+      const dataAttr = $(el).data('attr')
+
+      // Initialize Select2
+      $(el).select2({
+        placeholder: dataAttr,
+        minimumResultsForSearch: Infinity,
+        closeOnSelect: false,
+        // allowClear: true,
+        templateResult: formatOption,
+        templateSelection: formatSelection,
+      })
+    })
+
     $('#filters').select2({
       placeholder: dataAttr,
       minimumResultsForSearch: Infinity,
@@ -403,6 +418,20 @@ function filterTable() {
   initFieldSelect2()
 }
 
+function toggleDropdownFilter() {
+  const btn = document.getElementById('btnFilters')
+  const dropdown = document.getElementById('dropdownFilters')
+
+  btn.addEventListener('click', () => {
+    console.log('object')
+    if (dropdown.style.display == 'none') {
+      dropdown.style.display = 'block'
+    } else {
+      dropdown.style.display = 'none'
+    }
+  })
+}
+
 window.addEventListener('load', () => {
   inputTogglePassword()
   checkVerifyOTP()
@@ -410,5 +439,6 @@ window.addEventListener('load', () => {
   croppedImage()
   checkSidebar()
   toggleMenuDropdown()
+  toggleDropdownFilter()
   filterTable()
 })
