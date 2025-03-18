@@ -432,7 +432,36 @@ function toggleDropdownFilter() {
   })
 }
 
+function fileDropzone() {
+  Dropzone.options.myDropzone = {
+    url: '/upload', // URL to which files will be uploaded
+    autoProcessQueue: false, // Prevent Dropzone from uploading automatically
+    addRemoveLinks: true, // Allow removal of files
+    maxFiles: 1, // Maximum number of files
+    maxFilesize: 1,
+    acceptedFiles: 'image/*,application/pdf,.docx', // Allowed file types
+    init: function () {
+      var myDropzone = this
+
+      // Handle the upload button click
+      document
+        .getElementById('uploadBtn')
+        .addEventListener('click', function () {
+          console.log('object')
+          myDropzone.processQueue() // Process the queue to upload files
+        })
+
+      // When the modal is closed, clear the Dropzone queue
+      $('#modalImportFile').on('hidden.bs.modal', function () {
+        myDropzone.removeAllFiles() // Clear all files in the Dropzone
+        console.log('object')
+      })
+    },
+  }
+}
+
 window.addEventListener('load', () => {
+  fileDropzone()
   inputTogglePassword()
   checkVerifyOTP()
   sidebarMobile()

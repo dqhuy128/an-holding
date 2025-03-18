@@ -101,75 +101,62 @@ export default {
           thutucky: 'VBCN',
           quydt: 'Phú Thọ Land',
           giobank: 'VPB',
-          link: 'https://www.microsoft.com/',
+          dl: 'THP',
+          dongia: '100',
+          linkptg: 'https://www.microsoft.com/',
+          linkimage: 'https://www.microsoft.com/',
+          csbh: '17/01/2025',
+          quatang: 'KCKTG',
+          tinhtrangcoc: 'Đã ký cọc',
+          uutien: 'Ưu tiên cao',
         },
         {
-          stt: '02',
+          stt: '01',
           phankhu: 'Michael Phelps',
-          macan: 19,
+          macan: 23,
           loaihinh: 'United States',
-          tcbg: 2004,
+          tcbg: 2008,
           huong: 'Swimming',
-          ktdat: 6,
+          ktdat: 8,
           dtdat: 0,
-          dtxd: 2,
+          dtxd: 0,
           giafull: '16.234.556',
           tts: 8,
           thutucky: 'VBCN',
           quydt: 'Phú Thọ Land',
           giobank: 'VPB',
-          link: 'https://www.microsoft.com/',
+          dl: 'THP',
+          dongia: '100',
+          linkptg: 'https://www.microsoft.com/',
+          linkimage: 'https://www.microsoft.com/',
+          csbh: '17/01/2025',
+          quatang: 'KCKTG',
+          tinhtrangcoc: 'Đã ký cọc',
+          uutien: 'Ưu tiên cao',
         },
         {
-          stt: '03',
+          stt: '01',
           phankhu: 'Michael Phelps',
-          macan: 27,
-          loaihinh: 'United States',
-          tcbg: 2012,
-          huong: 'Swimming',
-          ktdat: 4,
-          dtdat: 2,
-          dtxd: 0,
-          giafull: '16.234.556',
-          tts: 6,
-          thutucky: 'VBCN',
-          quydt: 'Phú Thọ Land',
-          giobank: 'VPB',
-          link: 'https://www.microsoft.com/',
-        },
-        {
-          stt: '04',
-          phankhu: 'Natalie Coughlin',
-          macan: 25,
+          macan: 23,
           loaihinh: 'United States',
           tcbg: 2008,
           huong: 'Swimming',
-          ktdat: 1,
-          dtdat: 2,
-          dtxd: 3,
+          ktdat: 8,
+          dtdat: 0,
+          dtxd: 0,
           giafull: '16.234.556',
-          tts: 6,
+          tts: 8,
           thutucky: 'VBCN',
           quydt: 'Phú Thọ Land',
           giobank: 'VPB',
-          link: 'https://www.microsoft.com/',
-        },
-        {
-          stt: '05',
-          phankhu: 'Aleksey Nemov',
-          macan: 24,
-          loaihinh: 'Russia',
-          tcbg: 2000,
-          huong: 'Gymnastics',
-          ktdat: 2,
-          dtdat: 1,
-          dtxd: 3,
-          giafull: '16.234.556',
-          tts: 6,
-          thutucky: 'VBCN',
-          quydt: 'Phú Thọ Land',
-          giobank: 'VPB',
-          link: 'https://www.microsoft.com/',
+          dl: 'THP',
+          dongia: '100',
+          linkptg: 'https://www.microsoft.com/',
+          linkimage: 'https://www.microsoft.com/',
+          csbh: '17/01/2025',
+          quatang: 'KCKTG',
+          tinhtrangcoc: 'Đã ký cọc',
+          uutien: 'Ưu tiên cao',
         },
       ],
       // Column Definitions: Defines the columns to be displayed.
@@ -240,9 +227,41 @@ export default {
           filter: 'agSetColumnFilter',
         },
         {
-          headerName: 'Link',
-          field: 'link',
+          headerName: 'ĐL',
+          field: 'dl',
+          filter: 'agSetColumnFilter',
+        },
+        {
+          headerName: 'Đơn giá',
+          field: 'dongia',
+          filter: 'agSetColumnFilter',
+        },
+        {
+          headerName: 'Link PTG',
+          field: 'linkptg',
           cellRenderer: CompanyRenderer,
+        },
+        {
+          headerName: 'Hình ảnh đánh dấu',
+          field: 'linkimage',
+          cellRenderer: MaskImageRenderer,
+        },
+        {
+          headerName: 'CSBH',
+          field: 'csbh',
+        },
+        {
+          headerName: 'Quà tặng',
+          field: 'quatang',
+        },
+        {
+          headerName: 'Tình trạng cọc',
+          field: 'tinhtrangcoc',
+        },
+        {
+          headerName: 'Ưu tiên',
+          field: 'uutien',
+          filter: 'agSetColumnFilter',
         },
         {
           headerName: 'Edit',
@@ -252,9 +271,11 @@ export default {
         },
       ],
       onGridReady: (params) => {
-        params.api.sizeColumnsToFit()
         // optinal : params.api.autoSizeAllColumns(true)
-        params.api.autoSizeAllColumns()
+        setTimeout(() => {
+          params.api.sizeColumnsToFit()
+          params.api.autoSizeAllColumns()
+        }, 0)
       },
       defaultColDef: {
         flex: screen.width < 1280 ? 'auto' : null,
@@ -302,8 +323,13 @@ export default {
 
     // func render link single user
     function CompanyRenderer(params) {
-      const link = `<a href="${params.value}" target="_blank">Link</a>`
-      return link
+      const linkptg = `<a href="${params.value}" target="_blank">Link</a>`
+      return linkptg
+    }
+
+    function MaskImageRenderer(params) {
+      const linkimage = `<a href="${params.value}" target="_blank">Link</a>`
+      return linkimage
     }
 
     // func check color name single user

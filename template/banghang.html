@@ -13,7 +13,7 @@
       rel="stylesheet"
       href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
     />
-
+    <link href="js/dropzone.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
 
@@ -98,15 +98,123 @@
                   </span>
                 </a>
 
-                <a
-                  href=""
-                  class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
+                <button
+                  type="button"
+                  class="inline-flex items-center !bg-[#3F8CFE] !rounded-[8px] !gap-1 !p-[6px_12px]"
+                  data-bs-target="#modalImportFile"
+                  data-bs-toggle="modal"
                 >
                   <img src="images/asset/mdi_import.svg" alt="" />
                   <span class="!text-white !text-[14px] !font-bold">
                     Import file
                   </span>
-                </a>
+                </button>
+              </div>
+
+              <div class="modal fade" id="modalImportFile">
+                <div class="modal-dialog modal-dialog-centered !max-w-[410px]">
+                  <div
+                    class="modal-content !border-0 !rounded-[12px] p-[60px_24px_30px]"
+                  >
+                    <button
+                      type="button"
+                      data-bs-dismiss="modal"
+                      class="absolute z-10 top-4 right-4"
+                    >
+                      <img
+                        src="images/asset/material-symbols_close-rounded.svg"
+                        alt=""
+                      />
+                    </button>
+
+                    <div class="block">
+                      <div
+                        class="text-center !mb-7 text-[#363636] text-[14px] font-bold uppercase"
+                      >
+                        import bảng hàng
+                      </div>
+
+                      <div
+                        class="mb-5 bg-[rgba(242,_222,_222,_0.25)] border border-solid border-[#EDEDF6] rounded-[8px] p-3 ps-6"
+                      >
+                        <div class="flex items-center gap-6">
+                          <div class="flex-shrink-0 icon">
+                            <img
+                              src="images/asset/icon-park-outline_attention.svg"
+                              alt=""
+                            />
+                          </div>
+
+                          <div class="grow">
+                            <ul class="p-0 m-0">
+                              <li
+                                class="!list-disc !list-inside text-[#363636] text-[12px]/[24px] font-normal"
+                              >
+                                Chỉ được tải 1 tệp duy nhất / lần
+                              </li>
+                              <li
+                                class="!list-disc !list-inside text-[#363636] text-[12px]/[24px] font-normal"
+                              >
+                                Chỉ chấp nhận tệp dưới định dạng excel
+                              </li>
+                              <li
+                                class="!list-disc !list-inside text-[#363636] text-[12px]/[24px] font-normal"
+                              >
+                                Số lượng bản ghi tối đa / tệp: 1000 bản ghi
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div id="blockUploadFile" class="mb-7">
+                        <form
+                          action="/upload"
+                          id="myDropzone"
+                          class="dropzone flex flex-col items-center justify-center min-h-[182px] p-4 !border !border-dashed !border-[#464661] bg-[#fbfbfb] rounded-[8px]"
+                        >
+                          <div class="text-center dz-message">
+                            <div class="text-center icon mb-2.5">
+                              <img
+                                src="images/asset/icon-park-outline_upload-one.svg"
+                                alt=""
+                                class="m-auto"
+                              />
+                            </div>
+
+                            <div
+                              class="text-[#363636] text-[14px] font-semibold"
+                            >
+                              Kéo thả tệp vào đây
+                            </div>
+
+                            <div
+                              class="text-[#909090] text-[12px] font-normal italic py-2"
+                            >
+                              hoặc
+                            </div>
+
+                            <div
+                              class="cursor-pointer text-[#1B4DEA] text-[14px] font-semibold underline"
+                            >
+                              Chọn tệp tại đây
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="text-center">
+                        <button
+                          id="uploadBtn"
+                          type="button"
+                          class="inline-flex items-center !p-[5px_30px] !bg-[#3F8CFE] !rounded-[8px] text-[#fff] text-[16px] font-bold"
+                        >
+                          Xác nhận
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -123,14 +231,41 @@
     <script src="libs/bootstrap/popper.min.js"></script>
     <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="libs/swiper/swiper-bundle.min.js"></script>
-
     <script src="js/index.global.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.umd.min.js"></script>
     <script src="js/croppie.min.js"></script>
     <script src="js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@33.1.1/dist/ag-grid-enterprise.min.js"></script>
+    <script src="js/dropzone.min.js"></script>
     <script defer src="js/main.js"></script>
+    <script>
+      Dropzone.options.myDropzone = {
+        url: '/upload', // URL to which files will be uploaded
+        autoProcessQueue: false, // Prevent Dropzone from uploading automatically
+        addRemoveLinks: true, // Allow removal of files
+        maxFiles: 1, // Maximum number of files
+        maxFilesize: 1,
+        acceptedFiles: 'image/*,application/pdf,.docx', // Allowed file types
+        init: function () {
+          var myDropzone = this
+
+          // Handle the upload button click
+          document
+            .getElementById('uploadBtn')
+            .addEventListener('click', function () {
+              console.log('Đã submit file upload')
+              myDropzone.processQueue() // Process the queue to upload files
+            })
+
+          // When the modal is closed, clear the Dropzone queue
+          $('#modalImportFile').on('hidden.bs.modal', function () {
+            myDropzone.removeAllFiles() // Clear all files in the Dropzone
+            console.log('Đã đóng modal')
+          })
+        },
+      }
+    </script>
     <script>
       Vue.createApp({
         components: {
@@ -155,7 +290,7 @@
         },
         mounted() {
           window.onload = () => {
-            // $('#modalCroppie').modal('show')
+            // $('#modalImportFile').modal('show')
           }
         },
       }).mount('#app')

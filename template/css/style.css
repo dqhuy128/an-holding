@@ -21630,6 +21630,20 @@ span.ag-header-icon.ag-header-cell-menu-button.ag-header-menu-icon.ag-header-men
   line-height: normal;
 }
 
+.ag-pinned-right-header {
+  border: none !important;
+}
+
+.ag-cell.ag-cell-first-right-pinned:not(.ag-cell-range-left,
+.ag-cell-range-single-cell,
+.ag-cell-focus:not(.ag-cell-range-selected):focus-within) {
+  border: none !important;
+}
+
+.ag-pinned-right-cols-container .ag-row {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
 .eye-toggle {
   position: absolute;
   right: 10px;
