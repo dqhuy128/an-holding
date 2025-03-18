@@ -254,7 +254,7 @@ export default {
       onGridReady: (params) => {
         params.api.sizeColumnsToFit()
         // optinal : params.api.autoSizeAllColumns(true)
-        params.api.autoSizeAllColumns(true)
+        params.api.autoSizeAllColumns()
       },
       defaultColDef: {
         flex: screen.width < 1280 ? 'auto' : null,
