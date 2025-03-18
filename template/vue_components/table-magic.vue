@@ -177,6 +177,7 @@ export default {
         {
           headerName: 'STT',
           field: 'stt',
+          // pinned: 'left',
         },
         {
           headerName: 'Phân khu',
@@ -246,11 +247,14 @@ export default {
         {
           headerName: 'Edit',
           field: 'actions',
+          pinned: 'right',
           cellRenderer: actionCellRenderer,
         },
       ],
       onGridReady: (params) => {
         params.api.sizeColumnsToFit()
+        // optinal : params.api.autoSizeAllColumns(true)
+        params.api.autoSizeAllColumns(true)
       },
       defaultColDef: {
         flex: screen.width < 1280 ? 'auto' : null,

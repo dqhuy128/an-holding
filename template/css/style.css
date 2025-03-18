@@ -21807,7 +21807,8 @@ span.ag-header-icon.ag-header-cell-menu-button.ag-header-menu-icon.ag-header-men
   margin-bottom: 4px;
 }
 .form-add-new .ipt-gr input,
-.form-add-new .ipt-gr select {
+.form-add-new .ipt-gr select,
+.form-add-new .ipt-gr textarea {
   display: block;
   width: 100%;
   color: #909090;

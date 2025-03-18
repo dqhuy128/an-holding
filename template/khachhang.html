@@ -27,216 +27,295 @@
           <sidebar></sidebar>
 
           <div id="RootLayout" class="block !p-6">
-            <div class="text-end !mb-4">
-              <user-switch></user-switch>
-            </div>
+            <user-switch></user-switch>
 
-            <div class="block xl:mb-10 mb-7">
-              <h1
-                class="block !m-0 !text-[#363636] !text-[16px] !font-bold uppercase"
-              >
-                Quản lý người dùng
-              </h1>
-            </div>
-
-            <div class="bg-white rounded-[12px] p-2.5 !mb-6">
-              <div class="rounded-[8px] bg-[#F4F9FD] py-2.5 px-2">
-                <div
-                  class="group-fill-input flex flex-wrap items-stretch gap-2.5"
-                >
-                  <div class="grow grid grid-cols-12 gap-2.5">
-                    <div class="col-span-4 group-input">
-                      <input
-                        type="text"
-                        name=""
-                        id=""
-                        placeholder="Tên, số điện thoại"
-                        class="!rounded-[8px] border border-solid !border-[#ececec] bg-white p-2.5 !text-[#363636] !text-[12px] font-normal block w-full"
-                      />
+            <div class="!mb-2">
+              <div class="bg-white rounded-[12px] p-2.5">
+                <div class="rounded-[8px] bg-[#F4F9FD] py-2.5 px-2">
+                  <div class="flex flex-wrap items-stretch gap-2.5">
+                    <div class="flex-auto group-filter">
+                      <div class="group-input group-input-admin">
+                        <div class="macan-input-searchbox">
+                          <input
+                            type="text"
+                            name=""
+                            id="macanSearchbox"
+                            placeholder="Nhập từ khóa"
+                          />
+                          <label for="macanSearchbox">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                d="M11.2222 17.4444C14.6587 17.4444 17.4444 14.6587 17.4444 11.2222C17.4444 7.78578 14.6587 5 11.2222 5C7.78578 5 5 7.78578 5 11.2222C5 14.6587 7.78578 17.4444 11.2222 17.4444Z"
+                                stroke="#909090"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M19 19L15.6555 15.6555"
+                                stroke="#909090"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </label>
+                        </div>
+                      </div>
                     </div>
 
-                    <div class="col-span-4 group-input">
-                      <select class="select2-permisson select2-user-manage">
-                        <option value="one">First</option>
-                        <option value="two">Second</option>
-                        <option value="three">Third</option>
-                      </select>
+                    <div class="flex-auto group-filter">
+                      <div class="group-input group-input-admin">
+                        <select
+                          class="block-selector-admin"
+                          data-attr="Chọn quyền"
+                        >
+                          <option value="all">Tất cả</option>
+                          <option value="thoi-dai">Thời Đại</option>
+                          <option value="pho-bien">Phố Biển</option>
+                          <option value="hai-au">Hải Âu</option>
+                          <option value="sao-bien">Sao Biển</option>
+                          <option value="ngoc-trai">Ngọc Trai</option>
+                        </select>
+                      </div>
                     </div>
 
-                    <div class="col-span-4 group-input">
-                      <select class="select2-status select2-user-manage">
-                        <option value="one">First</option>
-                        <option value="two">Second</option>
-                        <option value="three">Third</option>
-                      </select>
+                    <div class="flex-auto group-filter">
+                      <div class="group-input group-input-admin">
+                        <select
+                          class="block-selector-admin"
+                          data-attr="Chọn trạng thái"
+                        >
+                          <option value="all">Tất cả</option>
+                          <option value="thoi-dai">Thời Đại</option>
+                          <option value="pho-bien">Phố Biển</option>
+                          <option value="hai-au">Hải Âu</option>
+                          <option value="sao-bien">Sao Biển</option>
+                          <option value="ngoc-trai">Ngọc Trai</option>
+                        </select>
+                      </div>
                     </div>
+
+                    <button
+                      type="button"
+                      class="!inline-flex !items-center !bg-[#3F8CFE] !rounded-[8px] !gap-1 !p-[6px_12px]"
+                    >
+                      <img src="images/asset/lucide_search.svg" alt="" />
+                      <span class="!text-white !text-[14px] !font-bold">
+                        Tìm kiếm
+                      </span>
+                    </button>
                   </div>
-
-                  <button
-                    type="button"
-                    class="ms-auto inline-flex items-center !gap-1 !bg-[#3F8CFE] !rounded-[8px] !p-[5px_16px] text-white !text-[14px] !font-bold hover:shadow-[inset_0_200px_0_#0000002d] transition"
-                  >
-                    <img src="images/asset/lucide_search.svg" alt="" />
-                    Tìm kiếm
-                  </button>
                 </div>
               </div>
             </div>
 
-            <div class="text-end !mb-2">
-              <button
-                type="button"
-                class="inline-flex items-center !gap-1 !text-white !text-[14px] !font-bold !bg-[#3F8CFE] !rounded-[8px] !p-[6px_15px] cursor-pointer"
-                data-bs-toggle="modal"
-                data-bs-target="#modalClients"
-              >
-                <img src="images/asset/si_add-fill.svg" alt="" />
-                Thêm mới
-              </button>
+            <div class="flex flex-wrap items-stretch !gap-3 !mb-2">
+              <div class="block">
+                <div class="relative">
+                  <button
+                    type="button"
+                    id="btnFilters"
+                    class="btn-filters inline-flex items-center gap-2 !rounded-[8px] !bg-white !p-[6px_24px]"
+                  >
+                    <img src="images/asset/icon-filter.svg" alt="" />
+                    <span class="text-[#363636] text-[14px] font-bold">
+                      Bộ lọc
+                    </span>
+                  </button>
+
+                  <div
+                    id="dropdownFilters"
+                    class="dropdown-filters absolute bg-white border border-solid border-[#ECECEC] rounded-[8px] min-w-[265px] p-2.5 z-100"
+                    style="display: none"
+                  >
+                    <div class="!mb-2.5">
+                      <span class="text-[#363636] text-[12px] font-bold !ps-5">
+                        Cài đặt hiển thị
+                      </span>
+                    </div>
+
+                    <div class="mb-1 input-search-filter">
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Tìm kiếm"
+                        class="text-[#363636] !text-[12px] placeholder:italic border border-solid border-[#ECECEC] w-full p-[5px_20px]"
+                      />
+                    </div>
+
+                    <div class="border border-solid border-[#ECECEC] w-full">
+                      <div
+                        class="item"
+                        v-for="n in 4"
+                        onclick="(e) => e.stopPropagation()"
+                      >
+                        <input type="checkbox" name="" :id="'showID' + n" />
+                        <label
+                          :for="'showID' + n"
+                          class="text-[#363636] text-[12px] font-normal"
+                        >
+                          KT đất
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="inline-flex flex-wrap items-center gap-3 ms-auto">
+                <button
+                  type="button"
+                  class="!inline-flex !items-center !bg-[#3F8CFE] !rounded-[8px] !gap-1 !p-[6px_12px]"
+                  data-bs-target="#modalAdminAdding"
+                  data-bs-toggle="modal"
+                >
+                  <img src="images/asset/si_add-fill.svg" alt="" />
+                  <span class="!text-white !text-[14px] !font-bold">
+                    Thêm mới
+                  </span>
+                </button>
+
+                <div class="modal fade" id="modalAdminAdding">
+                  <div
+                    class="modal-dialog modal-dialog-centered !max-w-[410px]"
+                  >
+                    <div class="modal-content !border-0 !rounded-[12px]">
+                      <button
+                        type="button"
+                        data-bs-dismiss="modal"
+                        class="absolute z-10 top-4 right-4"
+                      >
+                        <img
+                          src="images/asset/material-symbols_close-rounded.svg"
+                          alt=""
+                        />
+                      </button>
+
+                      <div class="xl:!p-[60px] xl:!pb-12 !p-4 modal-body">
+                        <div class="mb-8 text-center">
+                          <h3
+                            class="inline-block !text-[#363636] !text-[14px] !font-bold uppercase"
+                          >
+                            thêm mới khách hàng
+                          </h3>
+                        </div>
+
+                        <form action="" class="form-add-new">
+                          <div class="grid grid-cols-12 gap-x-[10px] gap-y-4">
+                            <div class="col-span-12">
+                              <div class="ipt-gr">
+                                <span class="required title"> Họ và tên </span>
+                                <input
+                                  type="text"
+                                  name=""
+                                  id=""
+                                  placeholder="Nhập họ và tên"
+                                />
+                              </div>
+                            </div>
+
+                            <div class="col-span-12">
+                              <div class="ipt-gr">
+                                <span class="required title">
+                                  Số điện thoại
+                                </span>
+                                <input
+                                  type="text"
+                                  name=""
+                                  id=""
+                                  placeholder="Nhập số điện thoại"
+                                />
+                              </div>
+                            </div>
+
+                            <div class="col-span-12 lg:col-span-6">
+                              <div class="ipt-gr">
+                                <span class="required title">
+                                  Tỉnh/ Thành
+                                </span>
+                                <select name="" id="">
+                                  <option value="">Chọn tỉnh thành</option>
+                                  <option value="">Chọn tỉnh thành</option>
+                                  <option value="">Chọn tỉnh thành</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-span-12 lg:col-span-6">
+                              <div class="ipt-gr">
+                                <span class="required title"> Dự án </span>
+                                <select name="" id="">
+                                  <option value="">Chọn dự án</option>
+                                  <option value="">Chọn dự án</option>
+                                  <option value="">Chọn dự án</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-span-12 lg:col-span-6">
+                              <div class="ipt-gr">
+                                <span class="required title"> Nguồn </span>
+                                <select name="" id="">
+                                  <option value="">Chọn nguồn</option>
+                                  <option value="">Chọn nguồn</option>
+                                  <option value="">Chọn nguồn</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-span-12 lg:col-span-6">
+                              <div class="ipt-gr">
+                                <span class="required title"> Sale </span>
+                                <select name="" id="">
+                                  <option value="">Chọn Sale</option>
+                                  <option value="">Chọn Sale</option>
+                                  <option value="">Chọn Sale</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-span-12">
+                              <div class="ipt-gr">
+                                <span class="required title"> Ghi chú </span>
+                                <textarea
+                                  name=""
+                                  id=""
+                                  class="min-h-[135px]"
+                                ></textarea>
+                              </div>
+                            </div>
+
+                            <div class="col-span-12 mt-3">
+                              <div class="text-center">
+                                <button
+                                  type="button"
+                                  class="inline-flex items-center !p-[5px_30px] !bg-[#3F8CFE] !rounded-[8px] text-[#fff] text-[16px] font-bold"
+                                >
+                                  Xác nhận
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- <filte-table></filte-table> -->
+            <!-- <table-magic></table-magic> -->
           </div>
         </div>
       </main>
-
-      <!-- Modal -->
-      <div class="modal fade" id="modalClients">
-        <div class="modal-dialog modal-dialog-centered !max-w-[410px]">
-          <div class="modal-content xl:!p-[60px] xl:!pb-7 !p-[30px]">
-            <div class="absolute !right-4 !top-4">
-              <button type="button" class="btn-close" data-bs-dismiss="modal">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M12 13.3998L7.10005 18.2998C6.91672 18.4831 6.68338 18.5748 6.40005 18.5748C6.11672 18.5748 5.88338 18.4831 5.70005 18.2998C5.51672 18.1165 5.42505 17.8831 5.42505 17.5998C5.42505 17.3165 5.51672 17.0831 5.70005 16.8998L10.6 11.9998L5.70005 7.0998C5.51672 6.91647 5.42505 6.68314 5.42505 6.3998C5.42505 6.11647 5.51672 5.88314 5.70005 5.6998C5.88338 5.51647 6.11672 5.4248 6.40005 5.4248C6.68338 5.4248 6.91672 5.51647 7.10005 5.6998L12 10.5998L16.9 5.6998C17.0834 5.51647 17.3167 5.4248 17.6 5.4248C17.8834 5.4248 18.1167 5.51647 18.3 5.6998C18.4834 5.88314 18.575 6.11647 18.575 6.3998C18.575 6.68314 18.4834 6.91647 18.3 7.0998L13.4 11.9998L18.3 16.8998C18.4834 17.0831 18.575 17.3165 18.575 17.5998C18.575 17.8831 18.4834 18.1165 18.3 18.2998C18.1167 18.4831 17.8834 18.5748 17.6 18.5748C17.3167 18.5748 17.0834 18.4831 16.9 18.2998L12 13.3998Z"
-                    fill="#909090"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div class="modal-body !p-0">
-              <div class="text-center !mb-8">
-                <h3 class="text-[#363636] !text-[14px] !font-bold uppercase">
-                  thêm mới người dùng
-                </h3>
-              </div>
-
-              <form action="" id="formUserAdmin" class="form-user-admin">
-                <div class="grid grid-cols-12 gap-2.5">
-                  <div class="col-span-12">
-                    <div class="group-item">
-                      <span class="required group-title">Họ và tên</span>
-                      <input
-                        type="text"
-                        name=""
-                        id=""
-                        class="group-input"
-                        placeholder="Nhập họ và tên"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="col-span-12">
-                    <div class="group-item">
-                      <span class="required group-title">Số điện thoại</span>
-                      <input
-                        type="text"
-                        name=""
-                        id=""
-                        class="group-input"
-                        placeholder="Nhập số điện thoại"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="xl:col-span-6 col-span-12">
-                    <div class="group-item">
-                      <span class="required group-title">Tỉnh/ Thành</span>
-                      <div class="group-select">
-                        <select class="select2-formstatus select2-formadmin">
-                          <option value="one">First</option>
-                          <option value="two">Second</option>
-                          <option value="three">Third</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="xl:col-span-6 col-span-12">
-                    <div class="group-item">
-                      <span class="required group-title">Dự án</span>
-                      <div class="group-select">
-                        <select class="select2-formstatus select2-formadmin">
-                          <option value="one">First</option>
-                          <option value="two">Second</option>
-                          <option value="three">Third</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="xl:col-span-6 col-span-12">
-                    <div class="group-item">
-                      <span class="required group-title">Nguồn</span>
-                      <div class="group-select">
-                        <select class="select2-formstatus select2-formadmin">
-                          <option value="one">First</option>
-                          <option value="two">Second</option>
-                          <option value="three">Third</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="xl:col-span-6 col-span-12">
-                    <div class="group-item">
-                      <span class="required group-title">Sale</span>
-                      <div class="group-select">
-                        <select
-                          class="select2-formpermission select2-formadmin"
-                        >
-                          <option value="one">First</option>
-                          <option value="two">Second</option>
-                          <option value="three">Third</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-span-12">
-                    <div class="group-item">
-                      <span class="group-title">Ghi chú</span>
-                      <div class="group-textarea">
-                        <textarea
-                          name=""
-                          id=""
-                          class="min-h-[135px]"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="text-center !mt-7">
-                  <button
-                    type="button"
-                    class="!text-white !text-[16px] !font-bold !bg-[#3F8CFE] !rounded-[8px] !p-[6px_30px] hover:shadow-[inset_0_200px_0_#0000002d] transition"
-                  >
-                    Xác nhận
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <script src="js/vue.global.js"></script>
     <script src="js/vue3-sfc-loader.js"></script>
@@ -252,7 +331,8 @@
     <script src="js/tippy.umd.min.js"></script>
     <script src="js/croppie.min.js"></script>
     <script src="js/select2.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@33.1.1/dist/ag-grid-enterprise.min.js"></script>
+    <script defer src="js/main.js"></script>
     <script>
       Vue.createApp({
         components: {
@@ -268,21 +348,16 @@
           'filte-table': Vue.defineAsyncComponent(() =>
             loadModule('./vue_components/filte-table.vue', options),
           ),
+          'table-magic': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/table-magic.vue', options),
+          ),
         },
         data() {
           return {}
         },
         mounted() {
           window.onload = () => {
-            // $('.select2-formstatus').select2({
-            //   placeholder: 'Chọn trạng thái',
-            // })
-            // $('.select2-formpermission').select2({
-            //   placeholder: 'Chọn quyền',
-            // })
-
-            $('.select2-permisson').select2()
-            $('.select2-status').select2()
+            // $('#modalAdminAdding').modal('show')
           }
         },
       }).mount('#app')
