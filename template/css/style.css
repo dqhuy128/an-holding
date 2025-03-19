@@ -21521,6 +21521,7 @@ label.error {
   }
 }
 .table-magic .table-container {
+  position: relative;
   border-radius: 12px;
   background: #fff;
   padding: 10px;
@@ -21530,6 +21531,9 @@ label.error {
   position: relative;
 }
 .table-magic .table-container .table-row.header {
+  position: sticky;
+  top: -10px;
+  z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21549,6 +21553,8 @@ label.error {
   line-height: normal;
 }
 .table-magic .table-container .table-row.body {
+  position: relative;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
