@@ -1,4 +1,4 @@
-const inputTogglePassword = () => {
+function inputTogglePassword() {
   const togglePassword = document.querySelectorAll('.inputTogglePassword')
 
   // Kiểm tra xem có tồn tại element hay k
@@ -37,8 +37,7 @@ function toggleMenuDropdown() {
 }
 
 // Hàm để tự động di chuyển giữa các ô OTP khi người dùng nhập
-
-const checkVerifyOTP = () => {
+function checkVerifyOTP() {
   let otpInputs = document.querySelectorAll('#verifyOTP .otp-input')
   otpInputs.forEach((input, index) => {
     input.addEventListener('input', (e) => {
@@ -56,12 +55,12 @@ const checkVerifyOTP = () => {
 }
 
 // Hàm gửi lại mã OTP
-const resendOtp = () => {
+function resendOtp() {
   alert('Mã OTP đã được gửi lại!')
 }
 
 // Hàm xác nhận mã OTP
-const verifyOtp = () => {
+function verifyOtp() {
   let otpInputs = document.querySelectorAll('#verifyOTP .otp-input')
   let otp = ''
   otpInputs.forEach((input) => {

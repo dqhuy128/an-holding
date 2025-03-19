@@ -21033,7 +21033,7 @@ label.error {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  gap: 40px;
+  gap: 20px;
 }
 .sidebar-list .item-sub {
   margin-left: 50px;

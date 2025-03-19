@@ -140,7 +140,7 @@ export default {
       checkVerifyOTP()
       sidebarMobile()
       checkSidebar()
-      toggleMenuDropdown()
+      // toggleMenuDropdown()
     })
   },
 }
