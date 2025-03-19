@@ -140,8 +140,16 @@
 // }
 
 .table-magic {
-  height: 63%;
+  height: 100%;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    height: 55%;
+  }
+
+  @media (min-width: 1280px) {
+    height: 63%;
+  }
 
   // &::-webkit-scrollbar-track {
   //   border-radius: 10px;

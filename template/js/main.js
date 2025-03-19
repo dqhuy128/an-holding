@@ -533,16 +533,16 @@ function tbDropdown() {
   })
 }
 
-window.addEventListener('load', () => {
+$(window).bind('load', function () {
   inputTogglePassword()
   checkVerifyOTP()
   sidebarMobile()
   tableMagic()
+  tbDropdown()
   croppedimage()
   checkSidebar()
   toggleMenuDropdown()
   toggleDropdownFilter()
-  tbDropdown()
   fileDropzone()
   filterTable()
 })
