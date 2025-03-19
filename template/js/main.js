@@ -469,14 +469,80 @@ function fileDropzone() {
   }
 }
 
+function tableMagic() {
+  if ($('#tableMagic') && $('#tableMagic').length > 0) {
+    const headerCells = document.querySelectorAll('.header .cell')
+    const bodyRows = document.querySelectorAll('.table-item')
+    const allRows = [document.querySelector('.header'), ...bodyRows]
+
+    // Tính toán độ rộng tối đa của từng cột
+    const columnWidths = Array.from(headerCells).map((cell) => cell.scrollWidth)
+
+    allRows.forEach((row) => {
+      const cells = row.querySelectorAll('.cell')
+      cells.forEach((cell, index) => {
+        const contentWidth = cell.scrollWidth
+        if (contentWidth > columnWidths[index]) {
+          columnWidths[index] = contentWidth
+        }
+      })
+    })
+
+    // Áp dụng độ rộng cho tất cả các cột
+    allRows.forEach((row) => {
+      const cells = row.querySelectorAll('.cell')
+      cells.forEach((cell, index) => {
+        cell.style.flex = `0 0 ${columnWidths[index]}px`
+        cell.style.minWidth = `${columnWidths[index]}px`
+      })
+    })
+  }
+}
+
+function tbDropdown() {
+  const tbBtn = document.querySelectorAll('.tb-dropdown-button')
+  const tbMenu = document.querySelectorAll('.tb-dropdown-menu')
+
+  tbBtn.forEach((item, id) => {
+    item.addEventListener('click', () => {
+      const siblings = item.nextElementSibling
+
+      tbMenu.forEach((content) => {
+        content.style.display = 'none'
+      })
+
+      if (siblings.style.display == 'none') {
+        siblings.style.display = 'block'
+      } else {
+        siblings.style.display = 'none'
+      }
+    })
+  })
+
+  // Đóng dropdown khi click bên ngoài
+  document.addEventListener('click', (e) => {
+    const isClickInside =
+      Array.from(tbBtn).some((btn) => btn.contains(e.target)) ||
+      Array.from(tbMenu).some((content) => content.contains(e.target))
+
+    if (!isClickInside) {
+      tbMenu.forEach((content) => {
+        content.style.display = 'none'
+      })
+    }
+  })
+}
+
 window.addEventListener('load', () => {
   inputTogglePassword()
   checkVerifyOTP()
   sidebarMobile()
+  tableMagic()
   croppedimage()
   checkSidebar()
   toggleMenuDropdown()
   toggleDropdownFilter()
+  tbDropdown()
   fileDropzone()
   filterTable()
 })
