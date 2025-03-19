@@ -139,9 +139,8 @@ export default {
       inputTogglePassword()
       checkVerifyOTP()
       sidebarMobile()
-      croppedImage()
       checkSidebar()
-      // toggleMenuDropdown()
+      toggleMenuDropdown()
     })
   },
 }

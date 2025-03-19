@@ -12,7 +12,6 @@ export default {
       checkVerifyOTP()
       checkSidebar()
       sidebarMobile()
-      croppedImage()
     }
   },
 }

@@ -311,7 +311,6 @@ export default {
       checkVerifyOTP()
       checkSidebar()
       sidebarMobile()
-      croppedImage()
       initFieldSelect2()
       initPriceSame()
       priceRangeSlider()

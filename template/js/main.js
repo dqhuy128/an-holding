@@ -122,7 +122,7 @@ const collapseFilter = () => {
   })
 }
 
-const croppedImage = () => {
+function croppedimage() {
   let croppieInstance
   let containerWidth, containerHeight
 
@@ -325,12 +325,42 @@ function filterTable() {
       allowClear: true,
     })
 
-    $('.block-selector').each(function (id, el) {
-      const name = $(el).attr('id')
-      const dataAttr = $(el).data('attr')
+    if ($('.block-selector') && $('.block-selector').length > 0) {
+      $('.block-selector').each(function (id, el) {
+        const name = $(el).attr('id')
+        const dataAttr = $(el).data('attr')
 
-      // Initialize Select2
-      $('#' + name + '.block-selector').select2({
+        // Initialize Select2
+        $('#' + name + '.block-selector').select2({
+          placeholder: dataAttr,
+          minimumResultsForSearch: Infinity,
+          closeOnSelect: false,
+          // allowClear: true,
+          templateResult: formatOption,
+          templateSelection: formatSelection,
+        })
+      })
+    }
+
+    if ($('.block-selector-admin') && $('.block-selector-admin').length > 0) {
+      $('.block-selector-admin').each(function (id, el) {
+        const name = $(el).attr('id')
+        const dataAttr = $(el).data('attr')
+
+        // Initialize Select2
+        $(el).select2({
+          placeholder: dataAttr,
+          minimumResultsForSearch: Infinity,
+          closeOnSelect: false,
+          // allowClear: true,
+          templateResult: formatOption,
+          templateSelection: formatSelection,
+        })
+      })
+    }
+
+    if ($('#filters') && $('#filters').length > 0) {
+      $('#filters').select2({
         placeholder: dataAttr,
         minimumResultsForSearch: Infinity,
         closeOnSelect: false,
@@ -338,31 +368,7 @@ function filterTable() {
         templateResult: formatOption,
         templateSelection: formatSelection,
       })
-    })
-
-    $('.block-selector-admin').each(function (id, el) {
-      const name = $(el).attr('id')
-      const dataAttr = $(el).data('attr')
-
-      // Initialize Select2
-      $(el).select2({
-        placeholder: dataAttr,
-        minimumResultsForSearch: Infinity,
-        closeOnSelect: false,
-        // allowClear: true,
-        templateResult: formatOption,
-        templateSelection: formatSelection,
-      })
-    })
-
-    $('#filters').select2({
-      placeholder: dataAttr,
-      minimumResultsForSearch: Infinity,
-      closeOnSelect: false,
-      // allowClear: true,
-      templateResult: formatOption,
-      templateSelection: formatSelection,
-    })
+    }
   }
 
   // Format each option to include a checkbox
@@ -422,52 +428,56 @@ function toggleDropdownFilter() {
   const btn = document.getElementById('btnFilters')
   const dropdown = document.getElementById('dropdownFilters')
 
-  btn.addEventListener('click', () => {
-    console.log('object')
-    if (dropdown.style.display == 'none') {
-      dropdown.style.display = 'block'
-    } else {
-      dropdown.style.display = 'none'
-    }
-  })
+  if (btn) {
+    btn.addEventListener('click', () => {
+      console.log('object')
+      if (dropdown.style.display == 'none') {
+        dropdown.style.display = 'block'
+      } else {
+        dropdown.style.display = 'none'
+      }
+    })
+  }
 }
 
 function fileDropzone() {
-  Dropzone.options.myDropzone = {
-    url: '/upload', // URL to which files will be uploaded
-    autoProcessQueue: false, // Prevent Dropzone from uploading automatically
-    addRemoveLinks: true, // Allow removal of files
-    maxFiles: 1, // Maximum number of files
-    maxFilesize: 1,
-    acceptedFiles: 'image/*,application/pdf,.docx', // Allowed file types
-    init: function () {
-      var myDropzone = this
+  if ($('.dropzone') && $('.dropzone').length > 0) {
+    Dropzone.options.myDropzone = {
+      url: '/upload', // URL to which files will be uploaded
+      autoProcessQueue: false, // Prevent Dropzone from uploading automatically
+      addRemoveLinks: true, // Allow removal of files
+      maxFiles: 1, // Maximum number of files
+      maxFilesize: 1,
+      acceptedFiles: 'image/*,application/pdf,.docx', // Allowed file types
+      init: function () {
+        var myDropzone = this
 
-      // Handle the upload button click
-      document
-        .getElementById('uploadBtn')
-        .addEventListener('click', function () {
+        // Handle the upload button click
+        document
+          .getElementById('uploadBtn')
+          .addEventListener('click', function () {
+            console.log('object')
+            myDropzone.processQueue() // Process the queue to upload files
+          })
+
+        // When the modal is closed, clear the Dropzone queue
+        $('#modalImportFile').on('hidden.bs.modal', function () {
+          myDropzone.removeAllFiles() // Clear all files in the Dropzone
           console.log('object')
-          myDropzone.processQueue() // Process the queue to upload files
         })
-
-      // When the modal is closed, clear the Dropzone queue
-      $('#modalImportFile').on('hidden.bs.modal', function () {
-        myDropzone.removeAllFiles() // Clear all files in the Dropzone
-        console.log('object')
-      })
-    },
+      },
+    }
   }
 }
 
 window.addEventListener('load', () => {
-  fileDropzone()
   inputTogglePassword()
   checkVerifyOTP()
   sidebarMobile()
-  croppedImage()
+  croppedimage()
   checkSidebar()
   toggleMenuDropdown()
   toggleDropdownFilter()
+  fileDropzone()
   filterTable()
 })
