@@ -1,7 +1,7 @@
 <template>
   <div
     id="Sidebar"
-    class="fixed xl:top-6 xl:left-6 max-xl:top-0 max-xl:left-0 z-50 max-w-[240px] h-full xl:h-[calc(100%-48px)]"
+    class="fixed xl:top-6 xl:left-6 max-xl:top-0 max-xl:left-0 z-50 max-w-[240px] h-full xl:h-[calc(100%-48px)] z-[101]"
   >
     <div
       id="sidebarTranslate"
@@ -138,7 +138,7 @@ export default {
     window.addEventListener('load', () => {
       inputTogglePassword()
       checkVerifyOTP()
-      sidebarMobile()
+      // sidebarMobile()
       checkSidebar()
       // toggleMenuDropdown()
     })

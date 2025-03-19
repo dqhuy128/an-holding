@@ -26,7 +26,7 @@
         >
           <div
             id="Sidebar"
-            class="fixed xl:top-6 xl:left-6 max-xl:top-0 max-xl:left-0 z-50 max-w-[240px] h-full xl:h-[calc(100%-48px)]"
+            class="fixed xl:top-6 xl:left-6 max-xl:top-0 max-xl:left-0 z-50 max-w-[240px] h-full xl:h-[calc(100%-48px)] z-[101]"
           >
             <div
               id="sidebarTranslate"
@@ -152,7 +152,7 @@
 
                   <!-- thay 3F8CFE => 363636 nếu là trường hợp text đen -->
                   <h2
-                    class="!text-[#3F8CFE] !text-[16px] !font-bold !uppercase !m-0 !ms-4"
+                    class="max-md:hidden !text-[#3F8CFE] !text-[16px] !font-bold !uppercase !m-0 !ms-4"
                   >
                     vinhomes ocean park 2
                   </h2>
@@ -200,12 +200,12 @@
               </div>
 
               <div class="flex flex-wrap items-stretch !gap-3 !mb-2">
-                <div class="block">
-                  <div class="relative">
+                <div class="block max-md:grow">
+                  <div class="relative h-full">
                     <button
                       type="button"
                       id="btnFilters"
-                      class="btn-filters inline-flex items-center gap-2 !rounded-[8px] !bg-white !p-[6px_24px]"
+                      class="btn-filters w-full justify-center inline-flex items-center gap-2 !rounded-[8px] !bg-white !p-[6px_24px] max-md:!p-[6px_12px] !h-full"
                     >
                       <img src="images/asset/icon-filter.svg" alt="" />
                       <span class="text-[#363636] text-[14px] font-bold">
@@ -326,7 +326,7 @@
                 <div class="inline-flex flex-wrap items-center gap-3 ms-auto">
                   <a
                     href=""
-                    class="inline-flex !bg-[#3F8CFE] !rounded-[8px] !gap-1 p-[6px_12px]"
+                    class="!inline-flex !bg-[#3F8CFE] !rounded-[8px] md:!gap-1 md:!p-[6px_12px] !p-[6px_4px]"
                   >
                     <img src="images/asset/mdi_export.svg" alt="" />
                     <span class="!text-white !text-[14px] !font-bold">
@@ -336,7 +336,7 @@
 
                   <button
                     type="button"
-                    class="inline-flex items-center !bg-[#3F8CFE] !rounded-[8px] !gap-1 !p-[6px_12px]"
+                    class="!inline-flex max-md:!items-center !bg-[#3F8CFE] !rounded-[8px] md:!gap-1 md:!p-[6px_12px] !p-[6px_4px]"
                     data-bs-target="#modalImportFile"
                     data-bs-toggle="modal"
                   >
@@ -881,10 +881,10 @@
               </div>
 
               <div
-                class="tb-pagination flex flex-wrap items-center max-md:justify-center gap-4 md:mt-auto mt-4"
+                class="tb-pagination flex flex-wrap items-center max-md:justify-center md:gap-4 gap-2 md:mt-auto mt-4"
               >
                 <div
-                  class="relative flex items-center gap-1 p-[8px_12px] bg-white !rounded-[8px] !min-w-[186px]"
+                  class="relative flex items-center gap-1 p-[8px_12px] bg-white !rounded-[8px] md:!min-w-[186px] text-[#363636] text-[12px] font-normal"
                 >
                   <select
                     name=""
@@ -900,7 +900,7 @@
                   <span>bản ghi / trang</span>
 
                   <div
-                    class="pointer-events-none absolute right-3 top-[50%] -translate-y-[50%]"
+                    class="max-md:hidden pointer-events-none absolute right-3 top-[50%] -translate-y-[50%]"
                   >
                     <svg
                       width="8"
@@ -918,13 +918,15 @@
                 </div>
 
                 <div
-                  class="ms-auto flex flex-wrap items-center gap-[8px] md:gap-[30px]"
+                  class="md:ms-auto flex flex-wrap items-center gap-[8px] md:gap-[30px]"
                 >
                   <div class="text-[#363636] text-[12px] font-normal">
                     1 - 10 trong 10 kết quả
                   </div>
 
-                  <div class="tb-navigation flex flex-wrap items-center gap-2">
+                  <div
+                    class="tb-navigation flex flex-wrap items-center md:gap-2"
+                  >
                     <a href="" class="disabled">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

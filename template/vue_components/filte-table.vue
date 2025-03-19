@@ -310,7 +310,7 @@ export default {
       inputTogglePassword()
       checkVerifyOTP()
       checkSidebar()
-      sidebarMobile()
+      // sidebarMobile()
       initFieldSelect2()
       initPriceSame()
       priceRangeSlider()

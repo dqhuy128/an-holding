@@ -11,7 +11,7 @@ export default {
       inputTogglePassword()
       checkVerifyOTP()
       checkSidebar()
-      sidebarMobile()
+      // sidebarMobile()
     }
   },
 }

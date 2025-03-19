@@ -88,7 +88,7 @@ function checkSidebar() {
   }
 }
 
-const sidebarMobile = () => {
+function sidebarMobile() {
   const sidebar = document.getElementById('sidebarTranslate')
   const btn = document.getElementById('btnSidebar')
   const btnClose = document.getElementById('btnSidebar-mb')
