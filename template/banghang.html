@@ -69,17 +69,40 @@
                     </div>
 
                     <div class="border border-solid border-[#ECECEC] w-full">
-                      <div
-                        class="item"
-                        v-for="n in 4"
-                        onclick="(e) => e.stopPropagation()"
-                      >
-                        <input type="checkbox" name="" :id="'showID' + n" />
+                      <div class="item" onclick="(e) => e.stopPropagation()">
+                        <input type="checkbox" name="" id="showID1" />
                         <label
-                          :for="'showID' + n"
+                          for="showID1"
+                          class="text-[#363636] text-[12px] font-normal"
+                        >
+                          Hướng
+                        </label>
+                      </div>
+                      <div class="item" onclick="(e) => e.stopPropagation()">
+                        <input type="checkbox" name="" id="showID2" />
+                        <label
+                          for="showID2"
                           class="text-[#363636] text-[12px] font-normal"
                         >
                           KT đất
+                        </label>
+                      </div>
+                      <div class="item" onclick="(e) => e.stopPropagation()">
+                        <input type="checkbox" name="" id="showID3" />
+                        <label
+                          for="showID3"
+                          class="text-[#363636] text-[12px] font-normal"
+                        >
+                          DTXD
+                        </label>
+                      </div>
+                      <div class="item" onclick="(e) => e.stopPropagation()">
+                        <input type="checkbox" name="" id="showID4" />
+                        <label
+                          for="showID4"
+                          class="text-[#363636] text-[12px] font-normal"
+                        >
+                          Giá full
                         </label>
                       </div>
                     </div>
