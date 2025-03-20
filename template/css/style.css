@@ -20958,6 +20958,44 @@ label.error {
   color: #e61b1b;
 }
 
+@media (max-width: 767px) {
+  #Sidebar #btnSidebar-mb {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  #Sidebar.is-overlay #btnSidebar-mb {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: inherit;
+  }
+  #Sidebar.is-overlay::before {
+    content: "";
+    background: white;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  #sidebarTranslate {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+  }
+  #sidebarTranslate.is-open {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+  }
+}
 .sidebar-list .link {
   position: relative;
   -webkit-transition: all 0.2s ease;
@@ -21037,6 +21075,11 @@ label.error {
 }
 .sidebar-list .item-sub {
   margin-left: 50px;
+}
+@media (max-width: 767px) {
+  .sidebar-list .item-sub {
+    margin-left: 20px;
+  }
 }
 
 .overflow-bar-custom::-webkit-scrollbar-track {
@@ -21506,7 +21549,7 @@ label.error {
 }
 
 .table-magic {
-  height: 100%;
+  height: 350px;
   overflow: hidden;
   /* Tắt nowrap cho các ô có nội dung cần xuống dòng */
 }

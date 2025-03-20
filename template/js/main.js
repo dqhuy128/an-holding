@@ -90,16 +90,48 @@ function checkSidebar() {
 
 function sidebarMobile() {
   const sidebar = document.getElementById('sidebarTranslate')
+  const sidebars = document.getElementById('Sidebar')
   const btn = document.getElementById('btnSidebar')
   const btnClose = document.getElementById('btnSidebar-mb')
 
   if (screen.width < 1280) {
     btn.addEventListener('click', () => {
       sidebar.classList.toggle('is-open')
+
+      if (sidebar.classList.contains('is-open')) {
+        sidebars.classList.add('is-overlay')
+      } else {
+        sidebars.classList.remove('is-overlay')
+      }
     })
 
     btnClose.addEventListener('click', () => {
       sidebar.classList.remove('is-open')
+      sidebars.classList.remove('is-overlay')
+    })
+  }
+}
+
+function toggleMobile() {
+  if (screen.width >= 1280) {
+    const btn = document.getElementById('btnSidebar')
+    const layout = document.getElementById('RootLayout')
+    const sidebar = document.getElementById('Sidebar')
+
+    btn.addEventListener('click', () => {
+      if (sidebar.classList.contains('isTranslate')) {
+        layout.style.marginLeft = sidebar.offsetWidth + 24 + 'px'
+        layout.style.transition = 'margin .2s'
+        sidebar.style.transform = 'translateX(0%)'
+        sidebar.style.transition = 'transform .2s'
+        sidebar.classList.remove('isTranslate')
+      } else {
+        layout.style.marginLeft = 0
+        layout.style.transition = 'margin .2s'
+        sidebar.style.transform = 'translateX(-150%)'
+        sidebar.style.transition = 'transform .2s'
+        sidebar.classList.add('isTranslate')
+      }
     })
   }
 }
@@ -537,6 +569,7 @@ $(window).bind('load', function () {
   inputTogglePassword()
   checkVerifyOTP()
   sidebarMobile()
+  toggleMobile()
   tableMagic()
   tbDropdown()
   croppedimage()
