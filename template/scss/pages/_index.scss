@@ -216,3 +216,34 @@
     transform: translateY(-50%) !important;
   }
 }
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  & > * {
+    display: inline-flex;
+    align-items: center;
+    color: #363636;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    &:last-child {
+      font-weight: 700;
+    }
+
+    &:not(:last-child) {
+      &::after {
+        content: '>';
+        display: inline-flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 4px;
+      }
+    }
+  }
+}

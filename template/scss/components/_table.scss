@@ -257,6 +257,7 @@
     }
 
     &.edit {
+      flex-shrink: 0;
       position: sticky;
       right: -10px;
       z-index: 11;
@@ -312,6 +313,26 @@
 
     &.bg-purple {
       background: #d9dcff;
+    }
+
+    &.tag-active {
+      border-radius: 24px;
+      border: 1px solid #12f13e;
+      background: #c4ffd0;
+      color: #00841a;
+      padding: 0 6px;
+      text-align: center;
+      justify-content: center;
+    }
+
+    &.tag-unactive {
+      border-radius: 24px;
+      border: 1px solid #f11212;
+      background: #ffc4c4;
+      color: #840000;
+      padding: 0 6px;
+      text-align: center;
+      justify-content: center;
     }
   }
 

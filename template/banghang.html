@@ -26,7 +26,7 @@
         >
           <div
             id="Sidebar"
-            class="fixed xl:top-6 xl:left-6 max-xl:top-0 max-xl:left-0 z-50 max-w-[240px] h-full xl:h-[calc(100%-48px)] z-[101]"
+            class="fixed xl:top-6 xl:left-6 max-xl:top-0 max-xl:left-0 max-w-[240px] h-full xl:h-[calc(100%-48px)] z-[101]"
           >
             <div
               id="sidebarTranslate"
@@ -141,7 +141,7 @@
 
           <div id="RootLayout" class="block !p-6">
             <div class="flex flex-col md:h-[95vh]">
-              <div id="userDropdown" class="relative mb-5">
+              <div id="userDropdown" class="relative !mb-5">
                 <div class="flex flex-wrap items-center gap-2">
                   <button type="button" id="btnSidebar">
                     <img
@@ -195,8 +195,344 @@
                 </div>
               </div>
 
+              <div class="breadcrumbs !mb-5">
+                <a href="">Home</a>
+                <a href="">Bảng hàng</a>
+                <a href="">Vinhomes ocean park 2</a>
+              </div>
+
               <div class="!mb-6">
-                <filte-table></filte-table>
+                <div class="bg-white rounded-[12px] p-2.5">
+                  <div class="rounded-[8px] bg-[#F4F9FD] py-2.5 px-2">
+                    <div class="text-end">
+                      <button
+                        id="collapseFilter"
+                        class="relative z-10 cursor-pointer"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M4 18C3.71667 18 3.47934 17.904 3.288 17.712C3.09667 17.52 3.00067 17.2827 3 17C2.99934 16.7173 3.09534 16.48 3.288 16.288C3.48067 16.096 3.718 16 4 16H20C20.2833 16 20.521 16.096 20.713 16.288C20.905 16.48 21.0007 16.7173 21 17C20.9993 17.2827 20.9033 17.5203 20.712 17.713C20.5207 17.9057 20.2833 18.0013 20 18H4ZM4 13C3.71667 13 3.47934 12.904 3.288 12.712C3.09667 12.52 3.00067 12.2827 3 12C2.99934 11.7173 3.09534 11.48 3.288 11.288C3.48067 11.096 3.718 11 4 11H20C20.2833 11 20.521 11.096 20.713 11.288C20.905 11.48 21.0007 11.7173 21 12C20.9993 12.2827 20.9033 12.5203 20.712 12.713C20.5207 12.9057 20.2833 13.0013 20 13H4ZM4 8C3.71667 8 3.47934 7.904 3.288 7.712C3.09667 7.52 3.00067 7.28267 3 7C2.99934 6.71733 3.09534 6.48 3.288 6.288C3.48067 6.096 3.718 6 4 6H20C20.2833 6 20.521 6.096 20.713 6.288C20.905 6.48 21.0007 6.71733 21 7C20.9993 7.28267 20.9033 7.52033 20.712 7.713C20.5207 7.90567 20.2833 8.00133 20 8H4Z"
+                            fill="#363636"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div id="toggleCollapseFilter">
+                      <div class="grid grid-cols-12 gap-2.5">
+                        <div class="col-span-12 xl:col-span-3 md:col-span-6">
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Phân khu/Block</span>
+                              <select
+                                id="phankhu"
+                                data-attr="Phân khu/Block"
+                                class="block-selector"
+                                multiple="multiple"
+                              >
+                                <option value="all">Tất cả</option>
+                                <option value="thoi-dai">Thời Đại</option>
+                                <option value="pho-bien">Phố Biển</option>
+                                <option value="hai-au">Hải Âu</option>
+                                <option value="sao-bien">Sao Biển</option>
+                                <option value="ngoc-trai">Ngọc Trai</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-span-12 xl:col-span-3 md:col-span-6">
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Mã căn</span>
+
+                              <div class="macan-input-searchbox">
+                                <input
+                                  type="text"
+                                  name=""
+                                  id="macanSearchbox"
+                                  placeholder="Nhập từ khóa"
+                                />
+                                <label for="macanSearchbox">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M11.2222 17.4444C14.6587 17.4444 17.4444 14.6587 17.4444 11.2222C17.4444 7.78578 14.6587 5 11.2222 5C7.78578 5 5 7.78578 5 11.2222C5 14.6587 7.78578 17.4444 11.2222 17.4444Z"
+                                      stroke="#909090"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M19 19L15.6555 15.6555"
+                                      stroke="#909090"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-span-12 xl:col-span-3 md:col-span-6">
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Loại hình sản phẩm</span>
+                              <select
+                                id="loaihinhsp"
+                                class="block-selector"
+                                multiple="multiple"
+                                data-attr="Chọn loại hình"
+                              >
+                                <option value="all">Tất cả</option>
+                                <option value="thoi-dai">Thời Đại</option>
+                                <option value="pho-bien">Phố Biển</option>
+                                <option value="hai-au">Hải Âu</option>
+                                <option value="sao-bien">Sao Biển</option>
+                                <option value="ngoc-trai">Ngọc Trai</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-span-12 xl:col-span-3 md:col-span-6">
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Hướng</span>
+                              <select
+                                id="huongnha"
+                                class="block-selector"
+                                multiple="multiple"
+                                data-attr="Chọn hướng nhà"
+                              >
+                                <option value="all">Tất cả</option>
+                                <option value="thoi-dai">Thời Đại</option>
+                                <option value="pho-bien">Phố Biển</option>
+                                <option value="hai-au">Hải Âu</option>
+                                <option value="sao-bien">Sao Biển</option>
+                                <option value="ngoc-trai">Ngọc Trai</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+                          style="display: none"
+                        >
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Tiêu chuẩn bàn giao</span>
+                              <select
+                                id="tieuchuan"
+                                class="block-selector"
+                                multiple="multiple"
+                                data-attr="Chọn tiêu chuẩn bàn giao"
+                              >
+                                <option value="all">Tất cả</option>
+                                <option value="thoi-dai">Thời Đại</option>
+                                <option value="pho-bien">Phố Biển</option>
+                                <option value="hai-au">Hải Âu</option>
+                                <option value="sao-bien">Sao Biển</option>
+                                <option value="ngoc-trai">Ngọc Trai</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+                          style="display: none"
+                        >
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Khoảng giá Full (tỷ)</span>
+
+                              <div class="dropdown dropdown-range">
+                                <button
+                                  type="button"
+                                  class="dropdown-toggle inline-flex !gap-2 items-center bg-white !rounded-[8px] p-1"
+                                  data-bs-toggle="dropdown"
+                                >
+                                  Khoảng giá
+                                </button>
+
+                                <ul class="dropdown-menu">
+                                  <li>
+                                    <div class="dropdown-item">
+                                      <div class="p-[8px_24px]">
+                                        <h3
+                                          class="!text-[#363636] !text-[12px] !font-normal leading-normal !mb-3"
+                                        >
+                                          Mức giá
+                                        </h3>
+                                        <!-- Thanh trượt (range slider) -->
+                                        <div
+                                          id="priceSlider"
+                                          class="slider-container !mb-5"
+                                        ></div>
+
+                                        <h3
+                                          class="!text-[#363636] !text-[12px] !font-normal leading-normal !mb-2"
+                                        >
+                                          Hoặc nhập khoảng (Đơn vị VNĐ)
+                                        </h3>
+
+                                        <div class="range-inputs-container">
+                                          <div class="item">
+                                            <label for="minPrice">Giá từ</label>
+                                            <input
+                                              type="number"
+                                              id="minPrice"
+                                            />
+                                          </div>
+
+                                          <div class="item">
+                                            <label for="maxPrice"
+                                              >Giá đến</label
+                                            >
+                                            <input
+                                              type="number"
+                                              id="maxPrice"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        class="flex flex-wrap items-stretch justify-center bg-[#F5F5F5] rounded-[4px] p-[12px_24px] !gap-2"
+                                      >
+                                        <!-- Nút Đặt lại & Áp dụng -->
+                                        <button
+                                          id="resetButton"
+                                          class="flex-[0_0_calc(50%-4px)] text-[#363636] !text-[12px] font-bold !rounded-[8px] border border-solid border-[#ddd] bg-white !p-2 transition hover:shadow-[inset_0_200px_0_#0000002d]"
+                                        >
+                                          Đặt lại
+                                        </button>
+                                        <button
+                                          id="applyButton"
+                                          class="flex-[0_0_calc(50%-4px)] text-white !text-[12px] font-bold !rounded-[8px] !bg-[#3F8CFE] border border-solid border-[#3F8CFE] !p-2 transition hover:shadow-[inset_0_200px_0_#0000002d]"
+                                        >
+                                          Áp dụng
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+                          style="display: none"
+                        >
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Khoảng diện tích đất (m2)</span>
+                              <select
+                                id="khoangdt"
+                                class="block-selector"
+                                multiple="multiple"
+                                data-attr="Khoảng diện tích"
+                              >
+                                <option value="all">Tất cả</option>
+                                <option value="thoi-dai">Thời Đại</option>
+                                <option value="pho-bien">Phố Biển</option>
+                                <option value="hai-au">Hải Âu</option>
+                                <option value="sao-bien">Sao Biển</option>
+                                <option value="ngoc-trai">Ngọc Trai</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="col-span-12 onOptinal xl:col-span-3 md:col-span-6"
+                          style="display: none"
+                        >
+                          <div class="group-filter">
+                            <div class="group-input">
+                              <span>Giá TTS tạm tính</span>
+
+                              <div class="dropdown">
+                                <button
+                                  type="button"
+                                  class="dropdown-toggle inline-flex !gap-2 items-center bg-white !rounded-[8px] p-1"
+                                  data-bs-toggle="dropdown"
+                                >
+                                  Khoảng giá
+                                </button>
+
+                                <ul class="dropdown-menu">
+                                  <li class="!mb-4">
+                                    <div class="dropdown-item">
+                                      <div class="filter-group">
+                                        <label class="filter-label"
+                                          >Đơn giá m2/ đất</label
+                                        >
+                                        <select
+                                          id="price-sort"
+                                          class="filter-select"
+                                        >
+                                          <option value="asc" selected>
+                                            Giá từ thấp tới cao
+                                          </option>
+                                          <option value="desc">
+                                            Giá từ cao tới thấp
+                                          </option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </li>
+
+                                  <li>
+                                    <div class="dropdown-item">
+                                      <div class="filter-group">
+                                        <label class="filter-label"
+                                          >Mức độ ưu tiên</label
+                                        >
+                                        <select
+                                          id="priority-sort"
+                                          class="filter-select"
+                                        >
+                                          <option value="high" selected>
+                                            Ưu tiên cao
+                                          </option>
+                                          <option value="medium">
+                                            Ưu tiên trung bình
+                                          </option>
+                                          <option value="low">
+                                            Ưu tiên thấp
+                                          </option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="flex flex-wrap items-stretch !gap-3 !mb-2">
@@ -336,7 +672,7 @@
 
                   <button
                     type="button"
-                    class="!inline-flex max-md:!items-center !bg-[#3F8CFE] !rounded-[8px] md:!gap-1 md:!p-[6px_12px] !p-[6px_4px]"
+                    class="!inline-flex !items-center !bg-[#3F8CFE] !rounded-[8px] md:!gap-1 md:!p-[6px_12px] !p-[6px_4px]"
                     data-bs-target="#modalImportFile"
                     data-bs-toggle="modal"
                   >
@@ -460,140 +796,20 @@
                 <div class="table-container">
                   <!-- Example column -->
                   <div id="tableRowHeader" class="table-row header">
-                    <div class="cell">STT</div>
-                    <div class="cell">
-                      Phân khu
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
+                    <div
+                      class="cell"
+                      v-for="(column,index) in tbhead"
+                      :key="index"
+                    >
+                      {{column.title}}
 
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID1' + i"
-                            />
-                            <label
-                              :for="'showID1' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">Mã căn</div>
-                    <div class="cell">
-                      Loại hình
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID2' + i"
-                            />
-                            <label
-                              :for="'showID2' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      TCBG
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID3' + i"
-                            />
-                            <label
-                              :for="'showID3' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      Hướng
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID4' + i"
-                            />
-                            <label
-                              :for="'showID4' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      KT đất
-                      <div class="tb-sort">
+                      <div class="tb-sort" v-if="column.hasSort">
                         <button type="button">
                           <img src="images/asset/tb-sort.svg" alt="" />
                         </button>
                       </div>
-                      <div class="tb-dropdown">
+
+                      <div class="tb-dropdown" v-if="column.hasSelected">
                         <button type="button" class="tb-dropdown-button">
                           <img src="images/asset/tb-nav.svg" alt="" />
                         </button>
@@ -622,251 +838,32 @@
                         </div>
                       </div>
                     </div>
-                    <div class="cell">
-                      DT đất
-                      <div class="tb-sort">
-                        <button type="button">
-                          <img src="images/asset/tb-sort.svg" alt="" />
-                        </button>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      DTXD
-                      <div class="tb-sort">
-                        <button type="button">
-                          <img src="images/asset/tb-sort.svg" alt="" />
-                        </button>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      Giá full
-                      <div class="tb-sort">
-                        <button type="button">
-                          <img src="images/asset/tb-sort.svg" alt="" />
-                        </button>
-                      </div>
-                    </div>
-                    <div class="cell">TTS</div>
-                    <div class="cell">
-                      Thu tục ký
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID6' + i"
-                            />
-                            <label
-                              :for="'showID6' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      Quý ĐT
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID7' + i"
-                            />
-                            <label
-                              :for="'showID7' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      Giỏ bank F1
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID8' + i"
-                            />
-                            <label
-                              :for="'showID8' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      DL
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID9' + i"
-                            />
-                            <label
-                              :for="'showID9' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">
-                      Don giá
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID10' + i"
-                            />
-                            <label
-                              :for="'showID10' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cell">Link PTG</div>
-                    <div class="cell">Hình ảnh đánh dấu</div>
-                    <div class="cell">CSBH</div>
-                    <div class="cell">Quà tặng</div>
-                    <div class="cell">Tình trạng cọc</div>
-                    <div class="cell">
-                      Ưu tiên
-                      <div class="tb-dropdown">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
-
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
-                          <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
-                          >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID11' + i"
-                            />
-                            <label
-                              :for="'showID11' + i"
-                              class="text-[#363636] text-[12px] font-normal"
-                            >
-                              Option {{i}}
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     <div class="cell edit">Edit</div>
                   </div>
 
                   <!-- Example row -->
                   <div id="tableRowBody" class="table-row body">
-                    <div class="table-item" v-for="n in 25">
-                      <div class="cell">0{{n}}</div>
+                    <div
+                      class="table-item"
+                      v-for="(item,index) in tbbody"
+                      :key="index"
+                    >
                       <!-- bg-blue , bg-green , bg-red , bg-purple -->
-                      <div class="cell bg-blue">Ánh Dương</div>
-                      <div class="cell">AD2-3{{n}}</div>
-                      <div class="cell">Liền kề</div>
-                      <div class="cell">Thổ</div>
-                      <div class="cell">DB</div>
-                      <div class="cell">5×20</div>
-                      <div class="cell">10{{n}}</div>
-                      <div class="cell">38{{n}}</div>
-                      <div class="cell">1{{n}}.234.556.000</div>
-                      <div class="cell">1{{n}}.567</div>
-                      <div class="cell">VBCN</div>
-                      <div class="cell">Phú Thọ Land</div>
-                      <div class="cell">VPB</div>
-                      <div class="cell">THP</div>
-                      <div class="cell">10{{n}}</div>
-                      <div class="cell"><a href="#">Link</a></div>
-                      <div class="cell"><a href="#">Link</a></div>
-                      <div class="cell">1{{n}}/01/2025</div>
-                      <div class="cell">KCKTG</div>
-                      <div class="cell">Đã ký cọc</div>
-                      <div class="cell">Ưu tiên cao</div>
+                      <div
+                        class="cell"
+                        :class="{'bg-blue' : id === 1}"
+                        v-for="(data,id) in item.data"
+                        :key="id"
+                      >
+                        <template v-if="!data.hasLink">
+                          {{ data.title }}
+                        </template>
+
+                        <template v-else="">
+                          <a href=""> {{ data.title }} </a>
+                        </template>
+                      </div>
+
                       <div class="cell edit edit-body">
                         <button type="button" class="cell-btn-edit">
                           <img src="images/asset/svg-edit.svg" alt="" />
@@ -1053,6 +1050,158 @@
         },
       }
     </script>
+
+    <!-- fake data for table -->
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            tbhead: [
+              {
+                title: 'STT',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Phân khu',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'Mã căn',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Loại hình',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'TCBG',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'Hướng',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'KT đất',
+                hasSelected: true,
+                hasSort: true,
+              },
+              {
+                title: 'DT đất',
+                hasSelected: false,
+                hasSort: true,
+              },
+              {
+                title: 'DTXD',
+                hasSelected: false,
+                hasSort: true,
+              },
+              {
+                title: 'Giá full',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'TTS',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Thủ tục ký',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'Quỹ DT',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'Giờ bank FI',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'DL',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'Đơn giá',
+                hasSelected: true,
+                hasSort: false,
+              },
+              {
+                title: 'Link PTG',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Hình ảnh đánh dấu',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'CSBH',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Quà tặng',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Tình trạng cọc',
+                hasSelected: false,
+                hasSort: false,
+              },
+              {
+                title: 'Ưu tiên',
+                hasSelected: true,
+                hasSort: false,
+              },
+            ],
+
+            tbbody: [
+              {
+                data: [
+                  { title: '01', hasLink: false },
+                  { title: 'Ánh Dương', hasLink: false },
+                  { title: 'AD2-39', hasLink: false },
+                  { title: 'Liên kết', hasLink: false },
+                  { title: 'Thổ', hasLink: false },
+                  { title: 'ĐB', hasLink: false },
+                  { title: '5x20', hasLink: false },
+                  { title: '100', hasLink: false },
+                  { title: '380', hasLink: false },
+                  { title: '16.234.556.000', hasLink: false },
+                  { title: '10.567', hasLink: false },
+                  { title: 'VBCN', hasLink: false },
+                  { title: 'Phú Thọ Land', hasLink: false },
+                  { title: 'VPB', hasLink: false },
+                  { title: 'THP', hasLink: false },
+                  { title: '100', hasLink: false },
+                  { title: 'Link', hasLink: true },
+                  { title: 'Link', hasLink: true },
+                  { title: '17/01/2025', hasLink: false },
+                  { title: 'KCKTG', hasLink: false },
+                  { title: 'Đã ký cọc', hasLink: false },
+                  { title: 'Ưu tiên cao', hasLink: false },
+                ],
+              },
+            ],
+          }
+        },
+      }).mount('#app')
+    </script>
+
     <script>
       import { reactive } from 'vue'
 
@@ -1084,6 +1233,7 @@
         },
       }
     </script>
+
     <script>
       Vue.createApp({
         components: {
@@ -1105,7 +1255,7 @@
         },
         data() {
           return {
-            menuData: [
+            menu [
               {
                 icon: 'images/asset/akar-icons_dashboard.svg',
                 title: 'Dashboard',
