@@ -1197,65 +1197,8 @@
                 ],
               },
             ],
-          }
-        },
-      }).mount('#app')
-    </script>
 
-    <script>
-      import { reactive } from 'vue'
-
-      export default {
-        setup() {
-          const menuData = reactive([
-            {
-              icon: 'images/asset/akar-icons_dashboard.svg',
-              title: 'Dashboard',
-              // sub: ['Vinhomes Ocean Park 2', 'Vinhomes Ocean Park 3'],
-            },
-            {
-              icon: 'images/asset/fluent_table-multiple-20-filled.svg',
-              title: 'Bảng hàng',
-              sub: ['Vinhomes Ocean Park 2', 'Vinhomes Ocean Park 3'],
-            },
-            {
-              icon: 'images/asset/ix_customer.svg',
-              title: 'Khách hàng',
-              sub: ['Vinhomes Ocean Park 2', 'Vinhomes Ocean Park 3'],
-              // sub: ['Vinhomes Ocean Park 2', 'Vinhomes Ocean Park 3'],
-            },
-            {
-              icon: 'images/asset/dashicons_admin-generic.svg',
-              title: 'Quản trị',
-              // sub: ['Vinhomes Ocean Park 2', 'Vinhomes Ocean Park 3'],
-            },
-          ])
-        },
-      }
-    </script>
-
-    <script>
-      Vue.createApp({
-        components: {
-          sidebar: Vue.defineAsyncComponent(() =>
-            loadModule('./vue_components/sidebar.vue', options),
-          ),
-          'root-layout': Vue.defineAsyncComponent(() =>
-            loadModule('./vue_components/root-layout.vue', options),
-          ),
-          'user-switch': Vue.defineAsyncComponent(() =>
-            loadModule('./vue_components/user-switch.vue', options),
-          ),
-          'filte-table': Vue.defineAsyncComponent(() =>
-            loadModule('./vue_components/filte-table.vue', options),
-          ),
-          'table-magic': Vue.defineAsyncComponent(() =>
-            loadModule('./vue_components/table-magic.vue', options),
-          ),
-        },
-        data() {
-          return {
-            menu [
+            menuData: [
               {
                 icon: 'images/asset/akar-icons_dashboard.svg',
                 title: 'Dashboard',
@@ -1279,6 +1222,31 @@
               },
             ],
           }
+        },
+      }).mount('#app')
+    </script>
+
+    <script>
+      Vue.createApp({
+        components: {
+          sidebar: Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/sidebar.vue', options),
+          ),
+          'root-layout': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/root-layout.vue', options),
+          ),
+          'user-switch': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/user-switch.vue', options),
+          ),
+          'filte-table': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/filte-table.vue', options),
+          ),
+          'table-magic': Vue.defineAsyncComponent(() =>
+            loadModule('./vue_components/table-magic.vue', options),
+          ),
+        },
+        data() {
+          return {}
         },
         mounted() {
           window.onload = () => {
