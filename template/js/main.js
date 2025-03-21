@@ -136,13 +136,13 @@ function toggleMobile() {
   }
 }
 
-// init toggle collapse filter
-const collapseFilter = () => {
+function collapsedFilter() {
   const btnCollapse = document.getElementById('collapseFilter')
   const blockCollapse = document.getElementById('toggleCollapseFilter')
   const optinal = document.querySelectorAll('.onOptinal')
 
   btnCollapse.addEventListener('click', () => {
+    console.log('object')
     optinal.forEach((item) => {
       if (item.style.display === 'none') {
         item.style.display = 'block'
@@ -570,6 +570,7 @@ $(window).bind('load', function () {
   checkVerifyOTP()
   sidebarMobile()
   toggleMobile()
+  collapsedFilter()
   tableMagic()
   tbDropdown()
   croppedimage()
