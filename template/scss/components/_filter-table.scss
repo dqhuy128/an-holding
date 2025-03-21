@@ -32,15 +32,6 @@
   background: #fff;
 }
 
-.select2-results__option[aria-selected='true'] .checkbox:after,
-.option-selected .checkbox:after {
-  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.0625 6.5625L4.6875 9.1875L9.9375 3.5625" stroke="%233F8CFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-  position: absolute;
-  color: #2c80ff;
-  top: -1px;
-  left: -1px;
-}
-
 /* Header styling */
 .block-header {
   font-weight: bold;
@@ -125,10 +116,26 @@
 .select2-container--default {
   .select2-results__option--selected {
     background-color: #f4f9fd !important;
+
+    .checkbox:after {
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.0625 6.5625L4.6875 9.1875L9.9375 3.5625" stroke="%233F8CFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      position: absolute;
+      color: #2c80ff;
+      top: -1px;
+      left: -1px;
+    }
   }
 
   .select2-results__option--highlighted.select2-results__option--selectable {
     background-color: #f4f9fd !important;
+
+    // .checkbox:after {
+    //   content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.0625 6.5625L4.6875 9.1875L9.9375 3.5625" stroke="%233F8CFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    //   position: absolute;
+    //   color: #2c80ff;
+    //   top: -1px;
+    //   left: -1px;
+    // }
   }
 }
 
