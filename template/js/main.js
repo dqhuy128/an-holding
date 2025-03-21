@@ -141,16 +141,18 @@ function collapsedFilter() {
   const blockCollapse = document.getElementById('toggleCollapseFilter')
   const optinal = document.querySelectorAll('.onOptinal')
 
-  btnCollapse.addEventListener('click', () => {
-    console.log('object')
-    optinal.forEach((item) => {
-      if (item.style.display === 'none') {
-        item.style.display = 'block'
-      } else {
-        item.style.display = 'none'
-      }
+  if (btnCollapse) {
+    btnCollapse.addEventListener('click', () => {
+      console.log('object')
+      optinal.forEach((item) => {
+        if (item.style.display === 'none') {
+          item.style.display = 'block'
+        } else {
+          item.style.display = 'none'
+        }
+      })
     })
-  })
+  }
 }
 
 function croppedimage() {
