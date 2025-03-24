@@ -21602,6 +21602,16 @@ label.error {
   gap: 4px;
   max-height: 350px;
 }
+@media (min-width: 1280px) {
+  .table-magic .table-container .table-row.body {
+    max-height: 200px;
+  }
+}
+@media (min-width: 1680px) {
+  .table-magic .table-container .table-row.body {
+    max-height: 350px;
+  }
+}
 .table-magic .table-container .table-item {
   display: -webkit-box;
   display: -ms-flexbox;

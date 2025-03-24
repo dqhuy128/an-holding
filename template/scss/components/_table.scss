@@ -216,6 +216,14 @@
         flex-flow: column;
         gap: 4px;
         max-height: 350px;
+
+        @media (min-width: 1280px) {
+          max-height: 200px;
+        }
+
+        @media (min-width: 1680px) {
+          max-height: 350px;
+        }
       }
     }
 
