@@ -21600,6 +21600,7 @@ label.error {
       -ms-flex-flow: column;
           flex-flow: column;
   gap: 4px;
+  max-height: 350px;
 }
 .table-magic .table-container .table-item {
   display: -webkit-box;

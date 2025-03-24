@@ -870,39 +870,41 @@
 
                     <!-- Example row -->
                     <div id="tableRowBody" class="table-row body">
-                      <div
-                        class="table-item"
-                        v-for="(item,index) in tbbody"
-                        :key="index"
-                      >
-                        <!-- bg-blue , bg-green , bg-red , bg-purple -->
+                      <template v-for="n in 25">
                         <div
-                          class="cell"
-                          :class="{'bg-blue' : id === 1}"
-                          v-for="(data,id) in item.data"
-                          :key="id"
+                          class="table-item"
+                          v-for="(item,index) in tbbody"
+                          :key="index"
                         >
-                          <template v-if="!data.hasLink">
-                            {{ data.title }}
-                          </template>
+                          <!-- bg-blue , bg-green , bg-red , bg-purple -->
+                          <div
+                            class="cell"
+                            :class="{'bg-blue' : id === 1}"
+                            v-for="(data,id) in item.data"
+                            :key="id"
+                          >
+                            <template v-if="!data.hasLink">
+                              {{ data.title }}
+                            </template>
 
-                          <template v-else="">
-                            <a href=""> {{ data.title }} </a>
-                          </template>
-                        </div>
+                            <template v-else="">
+                              <a href=""> {{ data.title }} </a>
+                            </template>
+                          </div>
 
-                        <div class="cell edit edit-body">
-                          <button type="button" class="cell-btn-edit">
-                            <img src="images/asset/svg-edit.svg" alt="" />
-                          </button>
-                          <button type="button" class="cell-btn-delete">
-                            <img src="images/asset/svg-delete.svg" alt="" />
-                          </button>
+                          <div class="cell edit edit-body">
+                            <button type="button" class="cell-btn-edit">
+                              <img src="images/asset/svg-edit.svg" alt="" />
+                            </button>
+                            <button type="button" class="cell-btn-delete">
+                              <img src="images/asset/svg-delete.svg" alt="" />
+                            </button>
+                          </div>
                         </div>
-                      </div>
+                      </template>
                     </div>
 
-                    <div
+                    <!-- <div
                       id="isLoadingTable"
                       class="absolute w-full inset-0 !h-full z-100 bg-[#ffffffbf]"
                     >
@@ -923,7 +925,7 @@
                         </svg>
                       </div>
                       <div class="block">Đang tải dữ liệu</div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
