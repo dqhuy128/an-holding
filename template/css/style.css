@@ -21553,12 +21553,8 @@ label.error {
 }
 @media (min-width: 768px) {
   .table-magic {
-    height: 55%;
-  }
-}
-@media (min-width: 1280px) {
-  .table-magic {
-    height: 63%;
+    height: 100%;
+    margin-bottom: 1.5rem;
   }
 }
 .table-magic .table-container {
