@@ -470,6 +470,56 @@ function toggleDropdownFilter() {
         dropdown.style.display = 'none'
       }
     })
+
+    // Đóng dropdown khi click ra ngoài
+    document.addEventListener('click', (e) => {
+      // Kiểm tra xem click có xảy ra bên ngoài btn và dropdown hay không
+      if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none'
+      }
+    })
+
+    // Khi checkbox "Chọn tất cả" thay đổi
+    $('#checkedAllFilter').on('change', function () {
+      // Lấy trạng thái checked của checkbox "Chọn tất cả"
+      let isChecked = $(this).is(':checked')
+
+      // Áp dụng trạng thái cho tất cả các checkbox con
+      $('.item')
+        .not('.item-checked-all')
+        .find('input[type="checkbox"]')
+        .prop('checked', isChecked)
+    })
+
+    // Khi bất kỳ checkbox con nào thay đổi
+    $('.item')
+      .not('.item-checked-all')
+      .find('input[type="checkbox"]')
+      .on('change', function () {
+        // Đếm tổng số checkbox con (trừ checkbox "Chọn tất cả")
+        let totalCheckboxes = $('.item')
+          .not('.item-checked-all')
+          .find('input[type="checkbox"]').length
+        // Đếm số checkbox con đang được checked
+        let checkedCheckboxes = $('.item')
+          .not('.item-checked-all')
+          .find('input[type="checkbox"]:checked').length
+
+        // Cập nhật trạng thái của checkbox "Chọn tất cả"
+        if (checkedCheckboxes === totalCheckboxes) {
+          // Nếu tất cả checkbox con được chọn
+          $('#checkedAllFilter').prop('checked', true)
+          $('#checkedAllFilter')[0].indeterminate = false
+        } else if (checkedCheckboxes === 0) {
+          // Nếu không có checkbox con nào được chọn
+          $('#checkedAllFilter').prop('checked', false)
+          $('#checkedAllFilter')[0].indeterminate = false
+        } else {
+          // Nếu chỉ một số checkbox con được chọn
+          $('#checkedAllFilter').prop('checked', false)
+          $('#checkedAllFilter')[0].indeterminate = true
+        }
+      })
   }
 }
 

@@ -239,6 +239,15 @@
       border: 1px solid #c8c8c8;
       background: #fafafa;
       padding: 4px 10px;
+      cursor: pointer;
+
+      &:hover {
+        background: #e3f7ff;
+
+        .cell.edit-body {
+          background: #e3f7ff;
+        }
+      }
     }
   }
 
@@ -319,6 +328,30 @@
 
     &.bg-purple {
       background: #d9dcff;
+    }
+
+    &.bg-orange {
+      background: #f89d15;
+    }
+
+    &.bg-red {
+      background: #ff5050;
+    }
+
+    &.bg-yellow {
+      background: #ffee6e;
+    }
+
+    &.bg-pink {
+      background: #ff96e7;
+    }
+
+    &.bg-ocean {
+      background: #14efff;
+    }
+
+    &.bg-brown {
+      background: #ffc55a;
     }
 
     &.tag-active {

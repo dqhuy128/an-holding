@@ -588,7 +588,7 @@
                         </span>
                       </div>
 
-                      <div class="mb-1 input-search-filter">
+                      <!-- <div class="mb-1 input-search-filter">
                         <input
                           type="text"
                           name=""
@@ -596,88 +596,37 @@
                           placeholder="Tìm kiếm"
                           class="text-[#363636] !text-[12px] placeholder:italic border border-solid border-[#ECECEC] w-full p-[5px_20px]"
                         />
-                      </div>
+                      </div> -->
 
                       <div class="border border-solid border-[#ECECEC] w-full">
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID1" />
+                        <div
+                          class="item item-checked-all"
+                          onclick="(e) => e.stopPropagation()"
+                        >
+                          <input
+                            type="checkbox"
+                            name=""
+                            id="checkedAllFilter"
+                          />
                           <label
-                            for="showID1"
+                            for="checkedAllFilter"
                             class="text-[#363636] text-[12px] font-normal"
                           >
-                            Hướng
+                            Chọn tất cả
                           </label>
                         </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID1" />
+                        <div
+                          class="item"
+                          onclick="(e) => e.stopPropagation()"
+                          v-for="(item,id) in filtersType"
+                          :key="id"
+                        >
+                          <input type="checkbox" name="" :id="'showID' + id" />
                           <label
-                            for="showID1"
+                            :for="'showID' + id"
                             class="text-[#363636] text-[12px] font-normal"
                           >
-                            Hướng
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID1" />
-                          <label
-                            for="showID1"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            Hướng
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID1" />
-                          <label
-                            for="showID1"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            Hướng
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID1" />
-                          <label
-                            for="showID1"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            Hướng
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID1" />
-                          <label
-                            for="showID1"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            Hướng
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID2" />
-                          <label
-                            for="showID2"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            KT đất
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID3" />
-                          <label
-                            for="showID3"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            DTXD
-                          </label>
-                        </div>
-                        <div class="item" onclick="(e) => e.stopPropagation()">
-                          <input type="checkbox" name="" id="showID4" />
-                          <label
-                            for="showID4"
-                            class="text-[#363636] text-[12px] font-normal"
-                          >
-                            Giá full
+                            {{ item }}
                           </label>
                         </div>
                       </div>
@@ -1109,6 +1058,16 @@
       Vue.createApp({
         data() {
           return {
+            filtersType: [
+              'Phân khu',
+              'Mã căn',
+              'Loại hình',
+              'TTBG',
+              'Hướng',
+              'KT đất',
+              'DT đất',
+              'DTXD',
+            ],
             tbhead: [
               {
                 title: 'STT',

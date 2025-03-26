@@ -21627,6 +21627,13 @@ label.error {
   border: 1px solid #c8c8c8;
   background: #fafafa;
   padding: 4px 10px;
+  cursor: pointer;
+}
+.table-magic .table-container .table-item:hover {
+  background: #e3f7ff;
+}
+.table-magic .table-container .table-item:hover .cell.edit-body {
+  background: #e3f7ff;
 }
 .table-magic .table-container {
   width: 100%;
@@ -21705,6 +21712,24 @@ label.error {
 }
 .table-magic .cell.bg-purple {
   background: #d9dcff;
+}
+.table-magic .cell.bg-orange {
+  background: #f89d15;
+}
+.table-magic .cell.bg-red {
+  background: #ff5050;
+}
+.table-magic .cell.bg-yellow {
+  background: #ffee6e;
+}
+.table-magic .cell.bg-pink {
+  background: #ff96e7;
+}
+.table-magic .cell.bg-ocean {
+  background: #14efff;
+}
+.table-magic .cell.bg-brown {
+  background: #ffc55a;
 }
 .table-magic .cell.tag-active {
   border-radius: 24px;
