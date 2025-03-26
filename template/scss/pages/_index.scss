@@ -247,3 +247,14 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .btn-filters {
+    width: 36px !important;
+    height: 36px !important;
+
+    span {
+      display: none;
+    }
+  }
+}

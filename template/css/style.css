@@ -21547,7 +21547,7 @@ label.error {
 }
 
 .table-magic {
-  height: 350px;
+  height: 100%;
   overflow: hidden;
   /* Tắt nowrap cho các ô có nội dung cần xuống dòng */
 }
@@ -22140,4 +22140,14 @@ label.error {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 4px;
+}
+
+@media (max-width: 767px) {
+  .btn-filters {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .btn-filters span {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

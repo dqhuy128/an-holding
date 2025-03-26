@@ -617,12 +617,36 @@ function tbDropdown() {
   })
 }
 
+function mobileDropFilters() {
+  if (screen.width < 768) {
+    const btn = document.getElementById('btnDropFilterLg')
+    const drop = document.getElementById('mbDropFilters')
+
+    btn.addEventListener('click', () => {
+      if (drop.classList.contains('hidden')) {
+        drop.classList.remove('hidden')
+      } else {
+        drop.classList.add('hidden')
+      }
+    })
+
+    // Đóng dropdown khi click ra ngoài
+    document.addEventListener('click', (e) => {
+      // Kiểm tra xem click có xảy ra bên ngoài btn và dropdown hay không
+      if (!btn.contains(e.target) && !drop.contains(e.target)) {
+        drop.classList.add('hidden')
+      }
+    })
+  }
+}
+
 $(window).bind('load', function () {
   inputTogglePassword()
   checkVerifyOTP()
   sidebarMobile()
   toggleMobile()
   collapsedFilter()
+  mobileDropFilters()
   tableMagic()
   tbDropdown()
   croppedimage()
