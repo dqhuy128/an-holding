@@ -142,7 +142,7 @@
           </div>
 
           <div id="RootLayout" class="block !p-6">
-            <div class="flex flex-col md:h-[95vh]">
+            <div class="flex flex-col h-[95vh] relative">
               <div id="userDropdown" class="relative !mb-5">
                 <div class="flex flex-wrap items-center gap-2">
                   <button type="button" id="btnSidebar">
@@ -212,121 +212,186 @@
                 </h2>
               </div>
 
-              <div class="!mb-2">
-                <div class="bg-white rounded-[12px] p-2.5">
-                  <div class="rounded-[8px] bg-[#F4F9FD] py-2.5 px-2">
-                    <div class="flex flex-wrap items-stretch gap-2.5">
-                      <div
-                        class="md:grow max-md:flex-[100%] group-filter max-w-[470px]"
-                      >
-                        <div class="group-input group-input-admin">
-                          <div class="macan-input-searchbox">
-                            <input
-                              type="text"
-                              name=""
-                              id="macanSearchbox"
-                              placeholder="Nhập từ khóa"
-                            />
+              <div
+                id="mbDropFilters"
+                class="hidden md:block md:!mb-6 max-md:absolute max-md:left-0 max-md:top-[175px] max-md:z-[101] max-md:w-full"
+              >
+                <div class="md:!mb-2">
+                  <div class="md:bg-white md:rounded-[12px] md:p-2.5">
+                    <div
+                      class="rounded-[8px] md:bg-[#F4F9FD] bg-white py-2.5 px-2 max-md:overflow-hidden max-md:border max-md:border-solid max-md:border-[#ECECEC]"
+                    >
+                      <div class="flex flex-wrap items-stretch gap-2.5">
+                        <div
+                          class="md:grow max-md:flex-[100%] group-filter max-w-[470px]"
+                        >
+                          <div class="group-input group-input-admin">
+                            <div class="macan-input-searchbox">
+                              <input
+                                type="text"
+                                name=""
+                                id="macanSearchbox"
+                                placeholder="Nhập từ khóa"
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="md:grow max-md:flex-[100%] group-filter">
-                        <div class="group-input group-input-admin">
-                          <select
-                            class="block-selector-admin"
-                            data-attr="Chọn quyền"
-                          >
-                            <option value="all">Tất cả</option>
-                            <option value="thoi-dai">Thời Đại</option>
-                            <option value="pho-bien">Phố Biển</option>
-                            <option value="hai-au">Hải Âu</option>
-                            <option value="sao-bien">Sao Biển</option>
-                            <option value="ngoc-trai">Ngọc Trai</option>
-                          </select>
+                        <div class="md:grow max-md:flex-[100%] group-filter">
+                          <div class="group-input group-input-admin">
+                            <select
+                              class="block-selector-admin"
+                              data-attr="Chọn quyền"
+                            >
+                              <option value="all">Tất cả</option>
+                              <option value="thoi-dai">Thời Đại</option>
+                              <option value="pho-bien">Phố Biển</option>
+                              <option value="hai-au">Hải Âu</option>
+                              <option value="sao-bien">Sao Biển</option>
+                              <option value="ngoc-trai">Ngọc Trai</option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="md:grow max-md:flex-[100%] group-filter">
-                        <div class="group-input group-input-admin">
-                          <select
-                            class="block-selector-admin"
-                            data-attr="Chọn trạng thái"
-                          >
-                            <option value="all">Tất cả</option>
-                            <option value="thoi-dai">Thời Đại</option>
-                            <option value="pho-bien">Phố Biển</option>
-                            <option value="hai-au">Hải Âu</option>
-                            <option value="sao-bien">Sao Biển</option>
-                            <option value="ngoc-trai">Ngọc Trai</option>
-                          </select>
+                        <div class="md:grow max-md:flex-[100%] group-filter">
+                          <div class="group-input group-input-admin">
+                            <select
+                              class="block-selector-admin"
+                              data-attr="Chọn trạng thái"
+                            >
+                              <option value="all">Tất cả</option>
+                              <option value="thoi-dai">Thời Đại</option>
+                              <option value="pho-bien">Phố Biển</option>
+                              <option value="hai-au">Hải Âu</option>
+                              <option value="sao-bien">Sao Biển</option>
+                              <option value="ngoc-trai">Ngọc Trai</option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
 
-                      <button
-                        type="button"
-                        class="!inline-flex !items-center !bg-[#3F8CFE] !rounded-[8px] !gap-1 !p-[6px_12px]"
-                      >
-                        <img src="images/asset/lucide_search.svg" alt="" />
-                        <span class="!text-white !text-[14px] !font-bold">
-                          Tìm kiếm
-                        </span>
-                      </button>
+                        <button
+                          type="button"
+                          class="!inline-flex !items-center !bg-[#3F8CFE] !rounded-[8px] !gap-1 !p-[6px_12px]"
+                        >
+                          <img src="images/asset/lucide_search.svg" alt="" />
+                          <span class="!text-white !text-[14px] !font-bold">
+                            Tìm kiếm
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="flex flex-wrap max-items-stretch !gap-3 !mb-2">
-                <div class="block">
-                  <div class="relative h-full">
-                    <button
-                      type="button"
-                      id="btnFilters"
-                      class="btn-filters inline-flex items-center gap-2 !rounded-[8px] !bg-white !p-[6px_24px] !h-full"
-                    >
-                      <img src="images/asset/icon-filter.svg" alt="" />
-                      <span class="text-[#363636] text-[14px] font-bold">
-                        Bộ lọc
-                      </span>
-                    </button>
-
+                <div class="block max-md:grow">
+                  <div class="flex flex-wrap gap-3">
                     <div
-                      id="dropdownFilters"
-                      class="dropdown-filters absolute bg-white border border-solid border-[#ECECEC] rounded-[8px] min-w-[265px] p-2.5 z-100"
-                      style="display: none"
+                      class="dropdownFilterLg relative max-md:block hidden shrink-0"
                     >
-                      <div class="!mb-2.5">
-                        <span
-                          class="text-[#363636] text-[12px] font-bold !ps-5"
+                      <button
+                        id="btnDropFilterLg"
+                        type="button"
+                        class="justify-center inline-flex items-center !rounded-[8px] !bg-white w-[36px] h-[36px]"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
                         >
-                          Cài đặt hiển thị
+                          <path
+                            d="M11.2222 17.4444C14.6587 17.4444 17.4444 14.6587 17.4444 11.2222C17.4444 7.78578 14.6587 5 11.2222 5C7.78578 5 5 7.78578 5 11.2222C5 14.6587 7.78578 17.4444 11.2222 17.4444Z"
+                            stroke="#363636"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M19 19L15.6555 15.6555"
+                            stroke="#363636"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div class="relative h-full">
+                      <button
+                        type="button"
+                        id="btnFilters"
+                        class="btn-filters w-full justify-center inline-flex items-center gap-2 !rounded-[8px] !bg-white md:!p-[6px_24px] !h-full max-md:!w-[36px] max-md:!h-[36px]"
+                      >
+                        <img src="images/asset/icon-filter.svg" alt="" />
+                        <span class="text-[#363636] text-[14px] font-bold">
+                          Bộ lọc
                         </span>
-                      </div>
+                      </button>
 
-                      <div class="mb-1 input-search-filter">
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          placeholder="Tìm kiếm"
-                          class="text-[#363636] !text-[12px] placeholder:italic border border-solid border-[#ECECEC] w-full p-[5px_20px]"
-                        />
-                      </div>
-
-                      <div class="border border-solid border-[#ECECEC] w-full">
-                        <div
-                          class="item"
-                          v-for="n in 4"
-                          onclick="(e) => e.stopPropagation()"
-                        >
-                          <input type="checkbox" name="" :id="'showID' + n" />
-                          <label
-                            :for="'showID' + n"
-                            class="text-[#363636] text-[12px] font-normal"
+                      <div
+                        id="dropdownFilters"
+                        class="max-h-[300px] flex flex-col overflow-y-auto dropdown-filters absolute bg-white border border-solid border-[#ECECEC] rounded-[8px] min-w-[265px] p-2.5 z-100"
+                        style="display: none"
+                      >
+                        <div class="!mb-2.5">
+                          <span
+                            class="text-[#363636] text-[12px] font-bold !ps-5"
                           >
-                            KT đất
-                          </label>
+                            Cài đặt hiển thị
+                          </span>
+                        </div>
+
+                        <!-- <div class="mb-1 input-search-filter">
+                          <input
+                            type="text"
+                            name=""
+                            id=""
+                            placeholder="Tìm kiếm"
+                            class="text-[#363636] !text-[12px] placeholder:italic border border-solid border-[#ECECEC] w-full p-[5px_20px]"
+                          />
+                        </div> -->
+
+                        <div
+                          class="border border-solid border-[#ECECEC] w-full"
+                        >
+                          <div
+                            class="item item-checked-all"
+                            onclick="(e) => e.stopPropagation()"
+                          >
+                            <input
+                              type="checkbox"
+                              name=""
+                              id="checkedAllFilter"
+                            />
+                            <label
+                              for="checkedAllFilter"
+                              class="text-[#363636] text-[12px] font-normal"
+                            >
+                              Chọn tất cả
+                            </label>
+                          </div>
+                          <div
+                            class="item"
+                            onclick="(e) => e.stopPropagation()"
+                            v-for="(item,id) in filtersType"
+                            :key="id"
+                          >
+                            <input
+                              type="checkbox"
+                              name=""
+                              :id="'showID' + id"
+                            />
+                            <label
+                              :for="'showID' + id"
+                              class="text-[#363636] text-[12px] font-normal"
+                            >
+                              {{ item }}
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -732,6 +797,16 @@
       Vue.createApp({
         data() {
           return {
+            filtersType: [
+              'Phân khu',
+              'Mã căn',
+              'Loại hình',
+              'TTBG',
+              'Hướng',
+              'KT đất',
+              'DT đất',
+              'DTXD',
+            ],
             tbhead: [
               {
                 title: 'STT',

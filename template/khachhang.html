@@ -142,7 +142,7 @@
           </div>
 
           <div id="RootLayout" class="block !p-6">
-            <div class="flex flex-col md:h-[95vh]">
+            <div class="flex flex-col h-[95vh] relative">
               <div id="userDropdown" class="relative !mb-5">
                 <div class="flex flex-wrap items-center gap-2">
                   <button type="button" id="btnSidebar">
@@ -217,7 +217,7 @@
                     <button
                       type="button"
                       id="btnFilters"
-                      class="btn-filters inline-flex items-center gap-2 !rounded-[8px] !bg-white !p-[6px_24px] !h-full"
+                      class="btn-filters w-full justify-center inline-flex items-center gap-2 !rounded-[8px] !bg-white md:!p-[6px_24px] !h-full max-md:!w-[36px] max-md:!h-[36px]"
                     >
                       <img src="images/asset/icon-filter.svg" alt="" />
                       <span class="text-[#363636] text-[14px] font-bold">
@@ -227,7 +227,7 @@
 
                     <div
                       id="dropdownFilters"
-                      class="dropdown-filters absolute bg-white border border-solid border-[#ECECEC] rounded-[8px] min-w-[265px] p-2.5 z-100"
+                      class="max-h-[300px] flex flex-col overflow-y-auto dropdown-filters absolute bg-white border border-solid border-[#ECECEC] rounded-[8px] min-w-[265px] p-2.5 z-100"
                       style="display: none"
                     >
                       <div class="!mb-2.5">
@@ -238,28 +238,45 @@
                         </span>
                       </div>
 
-                      <div class="mb-1 input-search-filter">
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          placeholder="Tìm kiếm"
-                          class="text-[#363636] !text-[12px] placeholder:italic border border-solid border-[#ECECEC] w-full p-[5px_20px]"
-                        />
-                      </div>
+                      <!-- <div class="mb-1 input-search-filter">
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Tìm kiếm"
+                        class="text-[#363636] !text-[12px] placeholder:italic border border-solid border-[#ECECEC] w-full p-[5px_20px]"
+                      />
+                    </div> -->
 
                       <div class="border border-solid border-[#ECECEC] w-full">
                         <div
-                          class="item"
-                          v-for="n in 4"
+                          class="item item-checked-all"
                           onclick="(e) => e.stopPropagation()"
                         >
-                          <input type="checkbox" name="" :id="'showID' + n" />
+                          <input
+                            type="checkbox"
+                            name=""
+                            id="checkedAllFilter"
+                          />
                           <label
-                            :for="'showID' + n"
+                            for="checkedAllFilter"
                             class="text-[#363636] text-[12px] font-normal"
                           >
-                            KT đất
+                            Chọn tất cả
+                          </label>
+                        </div>
+                        <div
+                          class="item"
+                          onclick="(e) => e.stopPropagation()"
+                          v-for="(item,id) in filtersType"
+                          :key="id"
+                        >
+                          <input type="checkbox" name="" :id="'showID' + id" />
+                          <label
+                            :for="'showID' + id"
+                            class="text-[#363636] text-[12px] font-normal"
+                          >
+                            {{ item }}
                           </label>
                         </div>
                       </div>
@@ -411,174 +428,176 @@
                 </div>
               </div>
 
-              <div id="tableMagic" class="table-magic">
-                <div class="table-container">
-                  <!-- Example column -->
-                  <div
-                    id="tableRowHeader"
-                    class="table-row header justify-between"
-                  >
+              <div class="h-full flex flex-col">
+                <div id="tableMagic" class="table-magic">
+                  <div class="table-container">
+                    <!-- Example column -->
                     <div
-                      class="cell"
-                      v-for="(column,index) in tbhead"
-                      :key="index"
+                      id="tableRowHeader"
+                      class="table-row header justify-between"
                     >
-                      {{column.title}}
+                      <div
+                        class="cell"
+                        v-for="(column,index) in tbhead"
+                        :key="index"
+                      >
+                        {{column.title}}
 
-                      <div class="tb-sort" v-if="column.hasSort">
-                        <button type="button">
-                          <img src="images/asset/tb-sort.svg" alt="" />
-                        </button>
-                      </div>
+                        <div class="tb-sort" v-if="column.hasSort">
+                          <button type="button">
+                            <img src="images/asset/tb-sort.svg" alt="" />
+                          </button>
+                        </div>
 
-                      <div class="tb-dropdown" v-if="column.hasSelected">
-                        <button type="button" class="tb-dropdown-button">
-                          <img src="images/asset/tb-nav.svg" alt="" />
-                        </button>
+                        <div class="tb-dropdown" v-if="column.hasSelected">
+                          <button type="button" class="tb-dropdown-button">
+                            <img src="images/asset/tb-nav.svg" alt="" />
+                          </button>
 
-                        <div
-                          class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
-                          style="display: none"
-                        >
                           <div
-                            class="item"
-                            onclick="(e) => e.stopPropagation()"
-                            v-for="i in 9"
+                            class="tb-dropdown-menu border border-solid border-[#ECECEC] w-full"
+                            style="display: none"
                           >
-                            <input
-                              type="checkbox"
-                              name=""
-                              :id="'showID5' + i"
-                            />
-                            <label
-                              :for="'showID5' + i"
-                              class="text-[#363636] text-[12px] font-normal"
+                            <div
+                              class="item"
+                              onclick="(e) => e.stopPropagation()"
+                              v-for="i in 9"
                             >
-                              Option {{i}}
-                            </label>
+                              <input
+                                type="checkbox"
+                                name=""
+                                :id="'showID5' + i"
+                              />
+                              <label
+                                :for="'showID5' + i"
+                                class="text-[#363636] text-[12px] font-normal"
+                              >
+                                Option {{i}}
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <div class="cell edit">Edit</div>
                     </div>
-                    <div class="cell edit">Edit</div>
-                  </div>
 
-                  <!-- Example row -->
-                  <div id="tableRowBody" class="table-row body">
-                    <template v-for="n in 25">
-                      <div
-                        class="table-item justify-between"
-                        v-for="(item,index) in tbbody"
-                        :key="index"
-                      >
-                        <!-- tag-active , tag-unactive -->
+                    <!-- Example row -->
+                    <div id="tableRowBody" class="table-row body">
+                      <template v-for="n in 25">
                         <div
-                          class="cell"
-                          :class="{'tag-active' : id === 6}"
-                          v-for="(data,id) in item.data"
-                          :key="id"
+                          class="table-item justify-between"
+                          v-for="(item,index) in tbbody"
+                          :key="index"
                         >
-                          {{ data.title }}
+                          <!-- tag-active , tag-unactive -->
+                          <div
+                            class="cell"
+                            :class="{'tag-active' : id === 6}"
+                            v-for="(data,id) in item.data"
+                            :key="id"
+                          >
+                            {{ data.title }}
+                          </div>
+
+                          <div class="cell edit edit-body">
+                            <button type="button" class="cell-btn-edit">
+                              <img src="images/asset/svg-edit.svg" alt="" />
+                            </button>
+                            <button type="button" class="cell-btn-delete">
+                              <img src="images/asset/svg-delete.svg" alt="" />
+                            </button>
+                          </div>
                         </div>
-
-                        <div class="cell edit edit-body">
-                          <button type="button" class="cell-btn-edit">
-                            <img src="images/asset/svg-edit.svg" alt="" />
-                          </button>
-                          <button type="button" class="cell-btn-delete">
-                            <img src="images/asset/svg-delete.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                    </template>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="tb-pagination flex flex-wrap items-center max-md:justify-center md:gap-4 gap-2 md:mt-auto mt-4"
-              >
-                <div
-                  class="relative flex items-center gap-1 p-[8px_12px] bg-white !rounded-[8px] md:!min-w-[186px] text-[#363636] text-[12px] font-normal"
-                >
-                  <select
-                    name=""
-                    id=""
-                    class="appearance-none text-[#363636] text-[12px] font-normal"
-                  >
-                    <option value="">20</option>
-                    <option value="">40</option>
-                    <option value="">30</option>
-                    <option value="">10</option>
-                  </select>
-
-                  <span>bản ghi / trang</span>
-
-                  <div
-                    class="max-md:hidden pointer-events-none absolute right-3 top-[50%] -translate-y-[50%]"
-                  >
-                    <svg
-                      width="8"
-                      height="6"
-                      viewBox="0 0 8 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0.964013 1.1641C1.04759 1.08049 1.14682 1.01417 1.25603 0.968927C1.36524 0.92368 1.4823 0.900391 1.60051 0.900391C1.71873 0.900391 1.83578 0.92368 1.945 0.968927C2.05421 1.01417 2.15344 1.08049 2.23701 1.1641L4.00001 2.9271L5.76401 1.1641C5.9339 1.00121 6.16083 0.911356 6.39617 0.913785C6.63152 0.916214 6.85654 1.01073 7.02303 1.17709C7.18952 1.34345 7.28422 1.5684 7.28683 1.80374C7.28944 2.03908 7.19976 2.26609 7.03701 2.4361L4.63701 4.8361C4.55344 4.9197 4.45421 4.98602 4.345 5.03127C4.23578 5.07652 4.11873 5.09981 4.00051 5.09981C3.8823 5.09981 3.76524 5.07652 3.65603 5.03127C3.54682 4.98602 3.44759 4.9197 3.36401 4.8361L0.964013 2.4361C0.795473 2.26735 0.700806 2.0386 0.700806 1.8001C0.700806 1.5616 0.795473 1.33285 0.964013 1.1641Z"
-                        fill="#363636"
-                      />
-                    </svg>
+                      </template>
+                    </div>
                   </div>
                 </div>
 
                 <div
-                  class="md:ms-auto flex flex-wrap items-center gap-[8px] md:gap-[30px]"
+                  class="tb-pagination flex flex-wrap items-center max-md:justify-center md:gap-4 gap-2 md:mt-auto mt-4"
                 >
-                  <div class="text-[#363636] text-[12px] font-normal">
-                    1 - 10 trong 10 kết quả
-                  </div>
-
                   <div
-                    class="tb-navigation flex flex-wrap items-center md:gap-2"
+                    class="relative flex items-center gap-1 p-[8px_12px] bg-white !rounded-[8px] md:!min-w-[186px] text-[#363636] text-[12px] font-normal"
                   >
-                    <a href="" class="disabled">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <path
-                          d="M14.69 17.29C14.7827 17.1975 14.8562 17.0876 14.9064 16.9666C14.9566 16.8456 14.9824 16.7159 14.9824 16.585C14.9824 16.454 14.9566 16.3243 14.9064 16.2034C14.8562 16.0824 14.7827 15.9725 14.69 15.88L10.81 12L14.69 8.11998C14.877 7.933 14.982 7.67941 14.982 7.41498C14.982 7.15055 14.877 6.89695 14.69 6.70998C14.503 6.523 14.2494 6.41796 13.985 6.41796C13.7206 6.41796 13.467 6.523 13.28 6.70998L8.68998 11.3C8.59727 11.3925 8.52373 11.5024 8.47355 11.6234C8.42336 11.7443 8.39753 11.874 8.39753 12.005C8.39753 12.1359 8.42336 12.2656 8.47355 12.3866C8.52373 12.5076 8.59727 12.6175 8.68998 12.71L13.28 17.3C13.66 17.68 14.3 17.68 14.69 17.29Z"
-                          fill="#363636"
-                        />
-                      </svg>
-                    </a>
-
-                    <input
-                      type="text"
+                    <select
                       name=""
-                      value="1"
                       id=""
-                      class="rounded-[8px] bg-white w-[30px] h-[30px] inline-flex flex-col items-center justify-center text-center"
-                    />
+                      class="appearance-none text-[#363636] text-[12px] font-normal"
+                    >
+                      <option value="">20</option>
+                      <option value="">40</option>
+                      <option value="">30</option>
+                      <option value="">10</option>
+                    </select>
 
-                    <a href="">
+                    <span>bản ghi / trang</span>
+
+                    <div
+                      class="max-md:hidden pointer-events-none absolute right-3 top-[50%] -translate-y-[50%]"
+                    >
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
+                        width="8"
+                        height="6"
+                        viewBox="0 0 8 6"
                         fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M9.31002 6.71002C9.21732 6.80254 9.14377 6.91242 9.09359 7.0334C9.04341 7.15437 9.01758 7.28405 9.01758 7.41502C9.01758 7.54599 9.04341 7.67567 9.09359 7.79665C9.14377 7.91762 9.21732 8.02751 9.31002 8.12002L13.19 12L9.31002 15.88C9.12304 16.067 9.018 16.3206 9.018 16.585C9.018 16.8494 9.12304 17.103 9.31002 17.29C9.497 17.477 9.7506 17.582 10.015 17.582C10.2794 17.582 10.533 17.477 10.72 17.29L15.31 12.7C15.4027 12.6075 15.4763 12.4976 15.5265 12.3766C15.5766 12.2557 15.6025 12.126 15.6025 11.995C15.6025 11.8641 15.5766 11.7344 15.5265 11.6134C15.4763 11.4924 15.4027 11.3825 15.31 11.29L10.72 6.70002C10.34 6.32002 9.70002 6.32002 9.31002 6.71002Z"
+                          d="M0.964013 1.1641C1.04759 1.08049 1.14682 1.01417 1.25603 0.968927C1.36524 0.92368 1.4823 0.900391 1.60051 0.900391C1.71873 0.900391 1.83578 0.92368 1.945 0.968927C2.05421 1.01417 2.15344 1.08049 2.23701 1.1641L4.00001 2.9271L5.76401 1.1641C5.9339 1.00121 6.16083 0.911356 6.39617 0.913785C6.63152 0.916214 6.85654 1.01073 7.02303 1.17709C7.18952 1.34345 7.28422 1.5684 7.28683 1.80374C7.28944 2.03908 7.19976 2.26609 7.03701 2.4361L4.63701 4.8361C4.55344 4.9197 4.45421 4.98602 4.345 5.03127C4.23578 5.07652 4.11873 5.09981 4.00051 5.09981C3.8823 5.09981 3.76524 5.07652 3.65603 5.03127C3.54682 4.98602 3.44759 4.9197 3.36401 4.8361L0.964013 2.4361C0.795473 2.26735 0.700806 2.0386 0.700806 1.8001C0.700806 1.5616 0.795473 1.33285 0.964013 1.1641Z"
                           fill="#363636"
                         />
                       </svg>
-                    </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:ms-auto flex flex-wrap items-center gap-[8px] md:gap-[30px]"
+                  >
+                    <div class="text-[#363636] text-[12px] font-normal">
+                      1 - 10 trong 10 kết quả
+                    </div>
+
+                    <div
+                      class="tb-navigation flex flex-wrap items-center md:gap-2"
+                    >
+                      <a href="" class="disabled">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M14.69 17.29C14.7827 17.1975 14.8562 17.0876 14.9064 16.9666C14.9566 16.8456 14.9824 16.7159 14.9824 16.585C14.9824 16.454 14.9566 16.3243 14.9064 16.2034C14.8562 16.0824 14.7827 15.9725 14.69 15.88L10.81 12L14.69 8.11998C14.877 7.933 14.982 7.67941 14.982 7.41498C14.982 7.15055 14.877 6.89695 14.69 6.70998C14.503 6.523 14.2494 6.41796 13.985 6.41796C13.7206 6.41796 13.467 6.523 13.28 6.70998L8.68998 11.3C8.59727 11.3925 8.52373 11.5024 8.47355 11.6234C8.42336 11.7443 8.39753 11.874 8.39753 12.005C8.39753 12.1359 8.42336 12.2656 8.47355 12.3866C8.52373 12.5076 8.59727 12.6175 8.68998 12.71L13.28 17.3C13.66 17.68 14.3 17.68 14.69 17.29Z"
+                            fill="#363636"
+                          />
+                        </svg>
+                      </a>
+
+                      <input
+                        type="text"
+                        name=""
+                        value="1"
+                        id=""
+                        class="rounded-[8px] bg-white w-[30px] h-[30px] inline-flex flex-col items-center justify-center text-center"
+                      />
+
+                      <a href="">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M9.31002 6.71002C9.21732 6.80254 9.14377 6.91242 9.09359 7.0334C9.04341 7.15437 9.01758 7.28405 9.01758 7.41502C9.01758 7.54599 9.04341 7.67567 9.09359 7.79665C9.14377 7.91762 9.21732 8.02751 9.31002 8.12002L13.19 12L9.31002 15.88C9.12304 16.067 9.018 16.3206 9.018 16.585C9.018 16.8494 9.12304 17.103 9.31002 17.29C9.497 17.477 9.7506 17.582 10.015 17.582C10.2794 17.582 10.533 17.477 10.72 17.29L15.31 12.7C15.4027 12.6075 15.4763 12.4976 15.5265 12.3766C15.5766 12.2557 15.6025 12.126 15.6025 11.995C15.6025 11.8641 15.5766 11.7344 15.5265 11.6134C15.4763 11.4924 15.4027 11.3825 15.31 11.29L10.72 6.70002C10.34 6.32002 9.70002 6.32002 9.31002 6.71002Z"
+                            fill="#363636"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -647,6 +666,16 @@
       Vue.createApp({
         data() {
           return {
+            filtersType: [
+              'Phân khu',
+              'Mã căn',
+              'Loại hình',
+              'TTBG',
+              'Hướng',
+              'KT đất',
+              'DT đất',
+              'DTXD',
+            ],
             tbhead: [
               {
                 title: 'ID',

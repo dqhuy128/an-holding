@@ -25,15 +25,18 @@ function inputTogglePassword() {
 function toggleMenuDropdown() {
   const btn = $('.onToggleDropdown')
 
-  if (btn && btn.length > 0) {
-    btn.each(function (id, item) {
-      $(item).click(function () {
-        console.log('object')
+  btn.each(function (id, item) {
+    const hasSub = $(item).parent().siblings().hasClass('sub')
+
+    if (hasSub) {
+      $(item).click(function (e) {
+        e.preventDefault()
+
         $(this).parent().siblings().slideToggle()
-        $(this).siblings().toggleClass('active')
+        $(this).toggleClass('active')
       })
-    })
-  }
+    }
+  })
 }
 
 // Hàm để tự động di chuyển giữa các ô OTP khi người dùng nhập
@@ -323,21 +326,45 @@ function filterTable() {
 
     $('.block-selector').each(function (id, el) {
       const name = $(el).attr('id')
-      const dataAttr = $(el).data('attr')
 
       // When "Tất cả" is selected, select all options
       $('#' + name + '.block-selector').on('select2:select', function (e) {
-        if (e.params.data.id === 'all') {
-          $('#' + name + '.block-selector option').prop('selected', true)
-          $('#' + name + '.block-selector').trigger('change')
+        const selectElement = $(this) // Lấy đối tượng dropdown hiện tại
+        const selectedId = e.params.data.id // Lấy id của tùy chọn vừa được chọn
+
+        if (selectedId === 'all') {
+          // Chọn tất cả các tùy chọn (trừ tùy chọn "Tất cả")
+          selectElement
+            .find('option')
+            .not('[value="all"]')
+            .prop('selected', true)
+          selectElement.trigger('change') // Kích hoạt sự kiện change để Select2 cập nhật giao diện
+          $('.select2-results__option').addClass(
+            'select2-results__option--selected',
+          )
         }
       })
 
-      // When "Tất cả" is unselected, unselect all options
       $('#' + name + '.block-selector').on('select2:unselect', function (e) {
-        if (e.params.data.id === 'all') {
-          $('#' + name + '.block-selector option').prop('selected', false)
-          $('#' + name + '.block-selector').trigger('change')
+        const selectElement = $(this) // Lấy đối tượng dropdown hiện tại
+        const unselectedId = e.params.data.id // Lấy id của tùy chọn vừa bị bỏ chọn
+
+        if (unselectedId === 'all') {
+          // Bỏ chọn tất cả các tùy chọn (trừ tùy chọn "Tất cả")
+          selectElement
+            .find('option')
+            .not('[value="all"]')
+            .prop('selected', false)
+          selectElement.trigger('change') // Kích hoạt sự kiện change để Select2 cập nhật giao diện
+          $('.select2-results__option').removeClass(
+            'select2-results__option--selected',
+          )
+        } else {
+          selectElement.find('option[value="all"]').prop('selected', false)
+          selectElement.trigger('change') // Kích hoạt sự kiện change để Select2 cập nhật giao diện
+          $('.select2-results__option')
+            .first()
+            .removeClass('select2-results__option--selected')
         }
       })
     })
@@ -618,10 +645,10 @@ function tbDropdown() {
 }
 
 function mobileDropFilters() {
-  if (screen.width < 768) {
-    const btn = document.getElementById('btnDropFilterLg')
-    const drop = document.getElementById('mbDropFilters')
+  const btn = document.getElementById('btnDropFilterLg')
+  const drop = document.getElementById('mbDropFilters')
 
+  if (screen.width < 768 && drop) {
     btn.addEventListener('click', () => {
       if (drop.classList.contains('hidden')) {
         drop.classList.remove('hidden')
