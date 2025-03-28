@@ -22029,10 +22029,6 @@ label.error {
 .tooltip {
   z-index: 99;
 }
-.tooltip-inner {
-  color: black;
-  background-color: white;
-}
 
 .bs-tooltip-top .tooltip-arrow::before,
 .bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
