@@ -22030,11 +22030,6 @@ label.error {
   z-index: 99;
 }
 
-.bs-tooltip-top .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
-  border-top-color: white;
-}
-
 .eye-toggle {
   position: absolute;
   right: 10px;
