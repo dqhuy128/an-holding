@@ -254,6 +254,8 @@
   .table-container {
     width: 100%;
     overflow-x: auto; /* Cuộn ngang nếu bảng quá rộng */
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .table-row {
@@ -354,16 +356,6 @@
       background: #ffc55a;
     }
 
-    &.tag-active {
-      border-radius: 24px;
-      border: 1px solid #12f13e;
-      background: #c4ffd0;
-      color: #00841a;
-      padding: 0 6px;
-      text-align: center;
-      justify-content: center;
-    }
-
     &.tag-unactive {
       border-radius: 24px;
       border: 1px solid #f11212;
@@ -373,6 +365,49 @@
       text-align: center;
       justify-content: center;
     }
+  }
+
+  [class*='tag-'] {
+    border-radius: 24px;
+    padding: 0 6px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .tag-green {
+    border: 1px solid #12f13e;
+    background: #c4ffd0;
+    color: #00841a;
+  }
+
+  .tag-blue {
+    border: 1px solid #0066ff;
+    background: #cee1ff;
+    color: #0066ff;
+  }
+
+  .tag-red {
+    border: 1px solid #ff0000;
+    background: #ffd6d6;
+    color: #ff0000;
+  }
+
+  .tag-grey {
+    border: 1px solid #808080;
+    background: #ebebeb;
+    color: #808080;
+  }
+
+  .tag-orange {
+    border: 1px solid #ff8c00;
+    background: #ffead0;
+    color: #ff8c00;
+  }
+
+  .tag-ocean {
+    border: 1px solid #00eaff;
+    background: #e7fdff;
+    color: #00eaff;
   }
 
   /* Tắt nowrap cho các ô có nội dung cần xuống dòng */
@@ -501,4 +536,18 @@
       transform: rotate(360deg);
     }
   }
+}
+
+.tooltip {
+  z-index: 99;
+
+  &-inner {
+    color: black;
+    background-color: white;
+  }
+}
+
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^='top'] .tooltip-arrow::before {
+  border-top-color: white;
 }

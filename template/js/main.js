@@ -667,6 +667,15 @@ function mobileDropFilters() {
   }
 }
 
+function tableTooltips() {
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]',
+  )
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl),
+  )
+}
+
 $(window).bind('load', function () {
   inputTogglePassword()
   checkVerifyOTP()
@@ -675,6 +684,7 @@ $(window).bind('load', function () {
   collapsedFilter()
   mobileDropFilters()
   tableMagic()
+  tableTooltips()
   tbDropdown()
   croppedimage()
   checkSidebar()
