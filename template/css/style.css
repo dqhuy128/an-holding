@@ -22286,4 +22286,8 @@ label.error {
   .btn-filters span {
     display: none;
   }
+}
+#price-slider {
+  -ms-touch-action: none;
+      touch-action: none;
 }/*# sourceMappingURL=style.css.map */

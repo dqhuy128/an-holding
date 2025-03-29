@@ -289,6 +289,10 @@ function filterTable() {
           ' VND',
       )
     })
+
+    $('#price-slider').on('touchstart touchmove', function (e) {
+      e.preventDefault()
+    })
   }
 
   // init select2 khoang gia
