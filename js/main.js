@@ -299,7 +299,7 @@ function filterTable() {
   function initPriceSame() {
     // Initialize Select2 on all filter selects
     $('.filter-select').select2({
-      minimumResultsForSearch: Infinity, // Hide the search box
+      minimumResultsForSearch: -1, // Hide the search box
       width: '100%',
     })
 
@@ -385,7 +385,7 @@ function filterTable() {
   function initFieldSelect2() {
     $('.block-selector.filter').select2({
       placeholder: 'Chọn khoảng giá',
-      minimumResultsForSearch: Infinity,
+      minimumResultsForSearch: -1,
       allowClear: true,
     })
 
@@ -397,11 +397,19 @@ function filterTable() {
         // Initialize Select2
         $('#' + name + '.block-selector').select2({
           placeholder: dataAttr,
-          minimumResultsForSearch: Infinity,
+          minimumResultsForSearch: -1,
           closeOnSelect: false,
           // allowClear: true,
           templateResult: formatOption,
           templateSelection: formatSelection,
+        })
+
+        $('#' + name + '.block-selector').on('select2:opening', function () {
+          $('.select2-search__field').prop('disabled', true)
+        })
+
+        $('#' + name + '.block-selector').on('select2:closing', function () {
+          $('.select2-search__field').prop('disabled', false)
         })
       })
     }
@@ -414,7 +422,7 @@ function filterTable() {
         // Initialize Select2
         $(el).select2({
           placeholder: dataAttr,
-          minimumResultsForSearch: Infinity,
+          minimumResultsForSearch: -1,
           closeOnSelect: false,
           // allowClear: true,
           templateResult: formatOption,
@@ -426,7 +434,7 @@ function filterTable() {
     if ($('#filters') && $('#filters').length > 0) {
       $('#filters').select2({
         placeholder: dataAttr,
-        minimumResultsForSearch: Infinity,
+        minimumResultsForSearch: -1,
         closeOnSelect: false,
         // allowClear: true,
         templateResult: formatOption,
